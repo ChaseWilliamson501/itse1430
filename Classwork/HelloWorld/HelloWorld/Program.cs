@@ -48,10 +48,10 @@ namespace HelloWorld
 
         private static void DisplayGame ()
         {
-            var literal1 = "Hello \"Bob\" ";
+            //var literal1 = "Hello \"Bob\" ";
             var path = "C:\\Windows\\System32";
             path += "\\Temp";
-            var path2 = @"C:\Windows\System32";
+            //var path2 = @"C:\Windows\System32";
    
             //1. String Concat
             Console.WriteLine("Name:" + name);
@@ -80,9 +80,10 @@ namespace HelloWorld
             //ReadBoolean("Hello").ToString();
             10.ToString(); // "10"
 
-            // Is string empty
-            string input = null;
-            int lengh = input.Length;
+
+            // Is string empty?
+            string input = " ";
+            //int lengh = input.Length;
             bool isEmpty;
 
             // 1.
@@ -154,9 +155,9 @@ namespace HelloWorld
                 // return true;
                 //if (result == "n")
                 // return false;
-                    
 
-                Console.WriteLine("Enter Y or No")
+
+                Console.WriteLine("Enter Y or No");
             } while (true);
    
 
@@ -181,6 +182,31 @@ namespace HelloWorld
 
                 Console.WriteLine("Enter a vallid decimal value");
                 
+            };
+        }
+
+        private static void PlayWithArrays ()
+        {
+            //int size = 100;
+            int[] prices = new int[100];
+            for(var index = 0; index < prices.Length; ++index)
+            {
+                prices[index] = index + 1;
+            };
+
+            DisplayArray(prices);
+
+            var input = "field1,field2,field3;field4,,field5";
+            var fields = input.Split(',', ';');
+        }
+
+        private static void DisplayArray (int[] values /*, int count*/)
+        {
+            //for (var index = 0; index < values.Length; ++index)
+            foreach (var item in values)
+            {
+                //Console.WriteLine(values[index]);
+                Console.WriteLine(item);
             };
         }
 
