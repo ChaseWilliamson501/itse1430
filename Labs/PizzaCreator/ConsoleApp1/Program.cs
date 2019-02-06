@@ -9,71 +9,108 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+enum PizzaSize { Small, Medium, Large};
+enum PizzaSauce { Traditional, Garlic, Oregano };
+enum PizzaCheese {Regular, Extra };
+enum PizzaDelivery { Takeout, Delivery};
+
+
+struct Pizzaorder
+{
+   public Pizzaorder (PizzaSize p1 )
+   {
+        Size = p1;
+        Meat_Bacon = false;
+        Meat_Ham = false;
+        Meat_Pepperoni = false;
+        Meat_Sausage = false;
+        Vegg_Blackolives = false;
+        Vegg_Mushrooms = false;
+        Vegg_Onions = false;
+        Vegg_Peppers = false;
+        Sauce = PizzaSauce.Traditional;
+        Cheese = PizzaCheese.Regular;
+        Delivery = PizzaDelivery.Takeout;
+    }
+
+
+   public PizzaSize Size;
+   public bool Meat_Bacon;
+   public bool Meat_Ham;
+   public bool Meat_Pepperoni;
+   public bool Meat_Sausage;
+   public bool Vegg_Blackolives;
+   public bool Vegg_Mushrooms;
+   public bool Vegg_Onions;
+   public bool Vegg_Peppers;
+   public PizzaSauce Sauce;
+   public PizzaCheese Cheese;
+   public PizzaDelivery Delivery;
+}
+
+
+
 namespace ConsoleApp1
 {
     class Program
     {
         static void Main( string[] args )
         {
+            List<Pizzaorder> ListOfOrders = new List<Pizzaorder>();
 
-            int choice;
-            int sizearray = 11;
-            string[] choiceselections = new string[sizearray];
-            int[] Prices = new int[sizearray];
-          
-           
+            Console.WriteLine("New Order: 1");
+            Console.WriteLine("Modify Order: 2");
+            Console.WriteLine("Display Order: 3");
+            Console.WriteLine("Quit: 4");
+            Console.WriteLine("Choose menu option: ");
+            var userchoice = Console.Read();
 
-
-            choice = GetMenuChoice();
-            processchoice(choiceselections, choice);
-
-
-        }
-
-        private static int GetMenuChoice()
-        {
-            
-                Console.WriteLine("New Order: 1");
-                Console.WriteLine("Modify Order: 2");
-                Console.WriteLine("Display Order: 3");
-                Console.WriteLine("Quit: 4");
-                Console.WriteLine("Choose menu option: ");
-                var userchoice = Console.Read();
-
-             while (userchoice < 1 || userchoice > 4)
+            while (userchoice != 4)
             {
-                Console.WriteLine("Invalid choice. Please choice between 1 - 4: " );
-                userchoice = Console.Read();
-            }
-
-            return userchoice;
-
-        }
-        private static void processchoice( string[] choiceselections, int choice )
-        {
-            while (choice != 4)
-            {
-                switch (choice)
+                switch (userchoice)
                 {
-                    case 1: NewOrder(choiceselections);
+                    case 1:
+                    ListOfOrders.Add(NewOrder());
 
                     break;
 
-                    case 2: ModifyOrder(choiceselections);
+                    case 2:
+                    ModifyOrder();
 
                     break;
 
-                    case 3: DisplayOrder(choiceselections);
+                    case 3:
+                    DisplayOrder(ListOfOrders);
 
+                    break;
+
+
+
+                    default:
+                    Console.WriteLine("Invalid choice. Please choice between 1 - 4: ");
+                    userchoice = Console.Read();
                     break;
                 }
             }
-            Console.Write("Thank you for using my PizzaCreator program");
-        }
 
-        private static string NewOrder( string[] choiceselections)
-        {
             
+            
+                
+            
+            Console.Write("Thank you for using my PizzaCreator program");
+        
+
+    }
+
+        
+        
+
+        private static Pizzaorder NewOrder()
+        {
+
+
+           
+
             // Choice size of pizza
 
             Console.WriteLine("Small: $5");
@@ -82,32 +119,38 @@ namespace ConsoleApp1
             Console.WriteLine("Please choice a size: (Small, Medium, or Large)");
             string Size = Console.ReadLine();
 
-            while (Size != "Small" || Size != "Medium" || Size != "Large")
+            Pizzaorder Order = new Pizzaorder(PizzaSize.Small);
+
+            while (true)
             {
-                Console.WriteLine("Invalid choice. Please choice either: Small, Medium, Large ");
-                Size = Console.ReadLine();
+                if (Size == "Small")
+                {
+
+                    break;
+
+                } else if (Size == "Medium")
+                {
+                    Order.Size = PizzaSize.Medium;
+                    break;
+
+                } else if (Size == "Large")
+
+                {
+                    Order.Size = PizzaSize.Large;
+                    break;
+
+                } else
+                {
+                    Console.WriteLine("Invalid choice. Please choice either: Small, Medium, Large ");
+                    Size = Console.ReadLine();
+                }
             }
+
+
+
             
-
-            switch (Size)
-            {
-                case "Small":
-                choiceselections[0] = "Small Pizza    $5";
-
-
-                break;
-
-                case "Medium":
-                choiceselections[0] = "Medium Pizza   $6.25";
-
-                break;
-
-                case "Large":
-                choiceselections[0] = "Large Pizza    $8.75";
-                
-
-                break;
-            }
+               
+            
 
 
 
@@ -119,55 +162,49 @@ namespace ConsoleApp1
             Console.WriteLine("Sausage");
             Console.WriteLine("Please choice which meat(s) you want. Meats are $0.75 each (Optional).");
             string Meats = Console.ReadLine();
-            
 
-            while (Meats != "" ||  Meats != "Bacon" || Meats != "Ham" || Meats != "Pepperoni" || Meats != "Sausage")
+
+            while (true)
             {
-                Console.WriteLine("Invalid choice. Please choice either: Bacon, Ham, Pepperoni, Sausage.");
-                Meats = Console.ReadLine();
-            }
 
-             int MeatCounter = 0;
 
-           while (Meats != "" && MeatCounter < 4)
-            {
-                switch (Meats)
+
+                if (Meats == "Bacon")
                 {
-                    case "Bacon":
-                    choiceselections[MeatCounter] = "Bacon          $0.75";
-
-                    break;
-
-                    case "Ham":
-                    choiceselections[MeatCounter] = "Ham            $0.75";
-
-                    break;
-
-                    case "Pepperoni":
-                    choiceselections[MeatCounter] = "Pepperoni       $0.75";
-
-                    break;
-
-                    case "Sausage":
-                    choiceselections[MeatCounter] = "Sausage         $0.75";
-
+                    Order.Meat_Bacon = true;
 
                     break;
                 }
-
-                MeatCounter++;
-
-                Console.WriteLine("Bacon");
-                Console.WriteLine("Ham");
-                Console.WriteLine("Pepperoni");
-                Console.WriteLine("Sausage");
-                Console.WriteLine("Please choice which meat(s) you want. Meats are $0.75 each (Optional).");
-
-                while (Meats != "" || Meats != "Bacon" || Meats != "Ham" || Meats != "Pepperoni" || Meats != "Sausage")
+                
+                else if (Meats == "Ham")
                 {
+                    Order.Meat_Ham = true;
+
+                    break;
+                } 
+                
+                else if (Meats == "Pepperoni")
+                {
+                    Order.Meat_Pepperoni = true;
+
+                    break;
+                }
+                
+                else if (Meats == "Sausage")
+                {
+                    Order.Meat_Sausage = true;
+
+                    break;
+                }
+                 else
+                { 
                     Console.WriteLine("Invalid choice. Please choice either: Bacon, Ham, Pepperoni, Sausage.");
                     Meats = Console.ReadLine();
+                    break;
                 }
+
+
+               
             }
             
             
@@ -184,56 +221,51 @@ namespace ConsoleApp1
             Console.WriteLine("Please choice which vegetables(s) you want. Vegetables are $0.50 each (Optional).");
             string Vegetables = Console.ReadLine();
 
-            while (Vegetables != "" || Vegetables != "Black olives" || Vegetables != "Mushrooms" || Vegetables != "Onions" || Vegetables != "Peppers")
+            while (true)
             {
-                Console.WriteLine("Invalid choice. Please choice either: Black olives, Mushrooms, Onions, or Peppers. ");
-                Vegetables = Console.ReadLine();
-            }
 
-            int VegetableCounter = 0;
 
-            while (Vegetables != "" && VegetableCounter < 4)
-            {
-                switch (Vegetables)
+
+                if (Vegetables == "Black olives")
                 {
-                    case "Black olives":
-                    choiceselections[VegetableCounter] = "Black olives    $0.50";
+                    Order.Vegg_Blackolives = true;
 
                     break;
 
-                    case "Mushrooms":
-                    choiceselections[VegetableCounter] = "Mushrooms       $0.50";
-
-                    break;
-
-                    case "Onions":
-                    choiceselections[VegetableCounter] = "Onions          $0.50";
-
-                    break;
-
-                    case "Peppers":
-                    choiceselections[VegetableCounter] = "Peppers         $0.50";
-
-
-
-                    break;
-                }
-
-                VegetableCounter++;
-
-                Console.WriteLine("Black olives");
-                Console.WriteLine("Mushrooms");
-                Console.WriteLine("Onions");
-                Console.WriteLine("Peppers");
-                Console.WriteLine("Please choice which vegetables(s) you want. Vegetables are $0.50 each (Optional).");
+                } 
                 
-
-                while (Vegetables != "" || Vegetables != "Black olives" || Vegetables != "Mushrooms" || Vegetables != "Onions" || Vegetables != "Peppers")
+                else if (Vegetables == "Mushrooms")
                 {
-                    Console.WriteLine("Invalid choice. Please choice either: Black olives, Mushrooms, Onions, or Peppers. ");
-                    Vegetables = Console.ReadLine();
+                    Order.Vegg_Mushrooms = true;
+
+                    break;
+                } 
+                
+                else if (Vegetables == "Onions")
+                {
+                    Order.Vegg_Onions = true;
+
+                    break;
                 }
+                
+                else if (Vegetables == "Pepper")
+                {
+                    Order.Vegg_Peppers = true;
+
+                    break;
+                } 
+                
+                else
+                {
+                    Console.WriteLine("Invalid choice. Please choice either: Black olives, Mushrooms, Onions, Peppers.");
+                    Meats = Console.ReadLine();
+                    break;
+                }
+
+
+
             }
+
                 
 
             // Choice type of sauce
@@ -244,29 +276,29 @@ namespace ConsoleApp1
             Console.WriteLine("Please choice a type of sauce: (Traditional, Garlic, or Oregano)");
             string Sauce = Console.ReadLine();
 
-            while (Sauce != "Traditional" || Sauce != "Garlic" || Sauce != "Oregeno" )
+            while (true)
             {
-                Console.WriteLine("Invalid choice. Please choice either: Traditional, Garlic, Oregeno. ");
-                Sauce = Console.ReadLine();
-            }
+                if (Sauce == "Traditional")
+                {
 
-            switch (Sauce)
-            {
-                case "Traditional":
-                choiceselections[3] = "Traditional      ";
+                    break;
 
-                break;
+                } else if (Sauce == "Garlic")
+                {
+                    Order.Sauce = PizzaSauce.Garlic;
+                    break;
 
-                case "Garlic":
-                choiceselections[3] = "Garlic          $1";
+                } else if (Sauce == "Oregano")
 
-                break;
+                {
+                    Order.Sauce = PizzaSauce.Oregano;
+                    break;
 
-                case "Oregeno":
-                choiceselections[3] = "Oregano         $1";
-
-
-                break;
+                } else
+                {
+                    Console.WriteLine("Invalid choice. Please choice either: Traditional, Garlic, Oregano. ");
+                    Size = Console.ReadLine();
+                }
             }
 
             // Choice type of cheese
@@ -276,26 +308,28 @@ namespace ConsoleApp1
             Console.WriteLine("Please choice a type of cheese: (Regular, or Extra)");
             string Cheese = Console.ReadLine();
 
-            while (Cheese != "Regular" || Meats != "Extra" )
+            while (true)
             {
-                Console.WriteLine("Invalid choice. Please choice either: Regular, or Extra. ");
-                Cheese = Console.ReadLine();
+                if (Cheese == "Regular")
+                {
+
+                    break;
+
+                } else if (Cheese == "Extra")
+                {
+                    Order.Cheese = PizzaCheese.Extra;
+                    break;
+
+                } 
+                
+                else
+                {
+                    Console.WriteLine("Invalid choice. Please choice either: Regular, or Extra ");
+                    Size = Console.ReadLine();
+                }
             }
 
-            switch (Cheese)
-            {
-                case "Regular":
-                choiceselections[4] = "Regular ";
 
-                break;
-
-                case "Extra":
-                choiceselections[4] = "Extra       $2.50";
-
-                break;
-            }
-             
-            
 
             // Choice type of delivery method
 
@@ -304,56 +338,152 @@ namespace ConsoleApp1
             Console.WriteLine("Please choice method of delivery: (Take Out, or Delivery)");
             string DeliveryMethod = Console.ReadLine();
 
-            while (DeliveryMethod != "Take Out" || DeliveryMethod != "Delivery" )
+            while (true)
             {
-                Console.WriteLine("Invalid choice. Please choose either: Take Out, or Delivery. ");
-                DeliveryMethod = Console.ReadLine();
+                if (DeliveryMethod == "Take Out")
+                {
+
+                    break;
+
+                } else if (DeliveryMethod == "Delivery")
+                {
+                    Order.Delivery = PizzaDelivery.Delivery;
+                    break;
+
+                } 
+                
+                else
+                {
+                    Console.WriteLine("Invalid choice. Please choice either: Take Out, or Delivery ");
+                    Size = Console.ReadLine();
+                }
             }
 
-            switch (DeliveryMethod)
-            {
-                case "Take Out":
-                choiceselections[5] = "Take Out";
-
-                break;
-
-                case "Delivery":
-                choiceselections[5] = "Delivery    $2.50";
-
-                break;
-            }
-
-            return 
+            return Order;
         }
 
-        private static string ModifyOrder(string[] choiceselections )
+        private static void ModifyOrder()
         {
 
         }
-        private static string DisplayOrder(string[] choiceselections)
+        private static void DisplayOrder(List<Pizzaorder> ListOfOrders)
         {
 
             Console.WriteLine();
+            double TotalCost = 0.0;
 
-            for (int position = 1; position < 5; position++)
+            foreach (Pizzaorder order in ListOfOrders)
             {
-               
-                if (choiceselections[position] != "")
+                if(order.Size == PizzaSize.Small)
                 {
-                    Console.WriteLine(choiceselections[position]);
+                    Console.WriteLine("Small Pizza    $5.00");
+                    TotalCost += 5.00;
                 }
-            }
-            for (int position = 5; position < 9; position++)
-            {
+
+                else if (order.Size == PizzaSize.Medium)
+                {
+                    Console.WriteLine("Medium Pizza   $6.25");
+                    TotalCost += 6.25;
+                }
+
+                else 
+                {
+                    Console.WriteLine("Large Pizza    $8.75");
+                    TotalCost += 8.75;
+                }
+                       
+                if(order.Meat_Bacon == true)
+                {
+                    Console.WriteLine("Bacon          $0.75");
+                    TotalCost += 0.75;
+                }
+
+                if (order.Meat_Ham == true)
+                {
+                    Console.WriteLine("Ham            $0.75");
+                    TotalCost += 0.75;
+                }
+
+                if (order.Meat_Bacon == true)
+                {
+                    Console.WriteLine("Pepperoni      $0.75");
+                    TotalCost += 0.75;
+                }
+
+                if (order.Meat_Bacon == true)
+                {
+                    Console.WriteLine("Sausage         $0.75");
+                    TotalCost += 0.75;
+                }
+
+                if (order.Vegg_Blackolives == true)
+                {
+                    Console.WriteLine("Blackolives     $0.75");
+                    TotalCost += 0.50;
+                }
+
+                if (order.Vegg_Mushrooms == true)
+                {
+                    Console.WriteLine("Mushrooms       $0.75");
+                    TotalCost += 0.50;
+                }
+
+                if (order.Vegg_Onions == true)
+                {
+                    Console.WriteLine("Onions          $0.75");
+                    TotalCost += 0.50;
+                }
+
+                if (order.Vegg_Peppers == true)
+                {
+                    Console.WriteLine("Peppers         $0.75");
+                    TotalCost += 0.50;
+                }
+
+                if (order.Sauce == PizzaSauce.Traditional)
+                {
+                    Console.WriteLine("Traditional    ");
+                    TotalCost += 0.00;
+                } 
                 
-
-                if (choiceselections[position] != "")
+                else if (order.Sauce == PizzaSauce.Garlic)
                 {
-                    Console.WriteLine(choiceselections[position]);
+                    Console.WriteLine("Garlic        $1.00");
+                    TotalCost += 1.00;
+                } 
+                
+                else
+                {
+                    Console.WriteLine("Oregano       $1.00");
+                    TotalCost += 1.00;
                 }
 
-            }
+                if (order.Cheese == PizzaCheese.Regular)
+                {
+                    Console.WriteLine("Regluar      ");
+                    TotalCost += 0.00;
+                } 
+                
+                
+                else
+                {
+                    Console.WriteLine("Extra        $1.25");
+                    TotalCost += 1.25;
+                }
 
+                if (order.Delivery == PizzaDelivery.Takeout)
+                {
+                    Console.WriteLine("Take Out"    );
+                    TotalCost += 0.00;
+                } 
+                
+                
+                else
+                {
+                    Console.WriteLine("Delivery     $2.50");
+                    TotalCost += 2.50;
+                }
+            }
 
                 
         }
