@@ -10,13 +10,39 @@ namespace GameManager
     public class Game
     {
         /// <summary>Name of the game.</summary> 
-        
-        public string Name;
+
+        public string Name = "";
 
         /// <summary>Publisher of the game.</summary>
-        public string Publisher;
+        public string Publisher = "";
         public decimal Price;
         public bool Owned;
         public bool Completed;
+
+        
+        //public string[] genres = new string[10];
+        //private decimal realPrice = Price;
+
+            /// <summary>Validate the object
+            /// <returns></returns>
+        public bool Valiate (/* Game this */)
+        {
+            //Redundant dude
+            var str = this.Name;
+
+            // Name is required
+           if (String.IsNullOrEmpty(Name))
+                return false;
+
+            // Price >= 0
+            if (Price < 0)
+                return false;
+
+            //Only if you need to pass the instance to someboby else
+            //MyType.foo(this);
+
+            return true;
+
+        }
     }
 }
