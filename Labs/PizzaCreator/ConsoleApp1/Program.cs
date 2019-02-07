@@ -104,7 +104,7 @@ namespace PizzaCreator
                         NewOrder(ref Temp);
                         ListOfOrders[Int32.Parse(ModifyNumber) -1] = Temp;
                     }
-
+                     
 
                 } else if (userchoice == "3")
                 {
