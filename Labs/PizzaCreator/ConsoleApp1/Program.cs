@@ -1,7 +1,7 @@
 ﻿/*
  * Lab 1
  * Chase Williamson
- * Referenced: William A. Clark (1239 Lab)
+ * Referenced: William A. Clark (1239 Lab), Spencer Lowery (1239 Lab)
  */
 using System;
 using System.Collections.Generic;
@@ -50,7 +50,7 @@ struct Pizzaorder
 
 
 
-namespace ConsoleApp1
+namespace PizzaCreator
 {
     class Program
     {
@@ -63,34 +63,44 @@ namespace ConsoleApp1
             Console.WriteLine("Display Order: 3");
             Console.WriteLine("Quit: 4");
             Console.WriteLine("Choose menu option: ");
-            var userchoice = Console.Read();
+            string userchoice = Console.ReadLine();
 
-            while (userchoice != 4)
+            while (userchoice != "4")
             {
-                switch (userchoice)
+                if (userchoice == "1")
                 {
-                    case 1:
+
                     ListOfOrders.Add(NewOrder());
 
-                    break;
 
-                    case 2:
+                } else if (userchoice == "2")
+                {
                     ModifyOrder();
 
-                    break;
 
-                    case 3:
+                }
+                
+                else if (userchoice == "3")
+                {
                     DisplayOrder(ListOfOrders);
 
-                    break;
 
-
-
-                    default:
-                    Console.WriteLine("Invalid choice. Please choice between 1 - 4: ");
-                    userchoice = Console.Read();
-                    break;
                 }
+                
+                else
+                {
+                    Console.WriteLine("Invalid choice. Please choice between 1 - 4: ");
+
+
+                }
+                
+
+                Console.WriteLine("New Order: 1");
+                Console.WriteLine("Modify Order: 2");
+                Console.WriteLine("Display Order: 3");
+                Console.WriteLine("Quit: 4");
+                Console.WriteLine("Choose menu option: ");
+                userchoice = Console.ReadLine();
             }
 
             
@@ -164,7 +174,7 @@ namespace ConsoleApp1
             string Meats = Console.ReadLine();
 
 
-            while (true)
+            while (Meats != "")
             {
 
 
@@ -173,38 +183,38 @@ namespace ConsoleApp1
                 {
                     Order.Meat_Bacon = true;
 
-                    break;
+                    
                 }
                 
                 else if (Meats == "Ham")
                 {
                     Order.Meat_Ham = true;
 
-                    break;
+                    
                 } 
                 
                 else if (Meats == "Pepperoni")
                 {
                     Order.Meat_Pepperoni = true;
 
-                    break;
+                    
                 }
                 
                 else if (Meats == "Sausage")
                 {
                     Order.Meat_Sausage = true;
 
-                    break;
+                    
                 }
                  else
                 { 
                     Console.WriteLine("Invalid choice. Please choice either: Bacon, Ham, Pepperoni, Sausage.");
-                    Meats = Console.ReadLine();
-                    break;
+                    
+                   
                 }
 
 
-               
+                Meats = Console.ReadLine();
             }
             
             
@@ -221,7 +231,7 @@ namespace ConsoleApp1
             Console.WriteLine("Please choice which vegetables(s) you want. Vegetables are $0.50 each (Optional).");
             string Vegetables = Console.ReadLine();
 
-            while (true)
+            while (Vegetables != "")
             {
 
 
@@ -230,7 +240,7 @@ namespace ConsoleApp1
                 {
                     Order.Vegg_Blackolives = true;
 
-                    break;
+                    
 
                 } 
                 
@@ -238,31 +248,31 @@ namespace ConsoleApp1
                 {
                     Order.Vegg_Mushrooms = true;
 
-                    break;
+                   
                 } 
                 
                 else if (Vegetables == "Onions")
                 {
                     Order.Vegg_Onions = true;
 
-                    break;
+                   
                 }
                 
-                else if (Vegetables == "Pepper")
+                else if (Vegetables == "Peppers")
                 {
                     Order.Vegg_Peppers = true;
 
-                    break;
+                   
                 } 
                 
                 else
                 {
                     Console.WriteLine("Invalid choice. Please choice either: Black olives, Mushrooms, Onions, Peppers.");
-                    Meats = Console.ReadLine();
-                    break;
+                    
+                    
                 }
 
-
+                Vegetables = Console.ReadLine();
 
             }
 
