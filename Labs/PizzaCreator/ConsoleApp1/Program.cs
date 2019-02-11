@@ -9,16 +9,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-enum PizzaSize { Small, Medium, Large};
+/*
+ * To organize the struct below
+ */
+enum PizzaSize { Small, Medium, Large};           
 enum PizzaSauce { Traditional, Garlic, Oregano };
 enum PizzaCheese {Regular, Extra };
-enum PizzaDelivery { Takeout, Delivery};
+enum PizzaDelivery { Takeout, Delivery};           
 
 
 struct Pizzaorder
 {
    public Pizzaorder (PizzaSize p1 )
    {
+        /*
+         *Default properties
+         */
+
         Size = p1;
         Meat_Bacon = false;
         Meat_Ham = false;
@@ -33,6 +40,10 @@ struct Pizzaorder
         Delivery = PizzaDelivery.Takeout;
     }
 
+    /*
+     * Properties of the choices
+     * Values can change here
+     */
 
    public PizzaSize Size;
    public bool Meat_Bacon;
@@ -54,7 +65,7 @@ namespace PizzaCreator
 {
     class Program
     {
-        static void Main( string[] args )
+        static void Main( string[] args ) // Function to let user choice how they want to handle their order
         {
             List<Pizzaorder> ListOfOrders = new List<Pizzaorder>();
 
@@ -71,9 +82,7 @@ namespace PizzaCreator
                 if (userchoice == "1")
                 {
 
-
-
-                    Pizzaorder Temp = new Pizzaorder(PizzaSize.Small);
+                    Pizzaorder Temp = new Pizzaorder(PizzaSize.Small); // keep track of how many orders were made
                     NewOrder(ref Temp);
                     ListOfOrders.Add(Temp);
                     DisplayOrder(Temp);
@@ -90,7 +99,7 @@ namespace PizzaCreator
                     {
                         string ModifyNumber = "1";
                         Console.WriteLine("Which order would you like to modify?");
-                        ModifyNumber = Console.ReadLine(); // ModifyOrder
+                        ModifyNumber = Console.ReadLine(); 
 
                         while (Int32.Parse(ModifyNumber) > ListOfOrders.Count())
                         {
@@ -128,13 +137,13 @@ namespace PizzaCreator
                 userchoice = Console.ReadLine();
             }
                 
-            Console.Write("Thank you for using my PizzaCreator program");
+            Console.Write("Thank you for using my PizzaCreator program"); // Exit out
     }
 
         
 
-        private static void NewOrder(ref Pizzaorder Order)
-        {
+        private static void NewOrder(ref Pizzaorder Order) // This function allows the user to choice how to customize their pizza
+        {                                                  // can also modify the order
 
             // Choice size of pizza
 
@@ -268,7 +277,6 @@ namespace PizzaCreator
             }
 
 
-
             // Choice type of sauce
 
             Console.Clear();
@@ -380,7 +388,7 @@ namespace PizzaCreator
         }
 
         
-        private static void DisplayOrder(List<Pizzaorder> ListOfOrders)
+        private static void DisplayOrder(List<Pizzaorder> ListOfOrders) // Display the order and calculate the total
         {
             Console.Clear();
             Console.WriteLine();
