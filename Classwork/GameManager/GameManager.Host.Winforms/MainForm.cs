@@ -28,6 +28,17 @@ namespace GameManager.Host.Winforms
             game.Name = "Star Wars FU";
             game.Price = 59.99M;
 
+            var name = game.Name;
+            if (name.Length == 0)
+                /* is empty */
+                ;
+                if (game.Name.Length == 0)
+                    /* is empty */
+                    ;
+                    
+
+            var isCool = game.IsCoolGame;
+
             //Validate(game)
             game.Valiate();
 
@@ -59,9 +70,10 @@ namespace GameManager.Host.Winforms
             MessageBox.Show("Help");
         }
 
-        private void addToolStripMenuItem_Click( object sender, EventArgs e )
+        private void OnGameAdd( object sender, EventArgs e )
         {
-
+            //Display UI
+            //If Ok then "add" to system
         }
     }
 }

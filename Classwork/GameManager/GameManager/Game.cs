@@ -10,21 +10,76 @@ namespace GameManager
     public class Game
     {
         /// <summary>Name of the game.</summary> 
+        public string Name
+        {
+            get { return _name ?? " "; }
+            set { _name = value; }
+        }
 
-        public string Name = "";
+        private string _name = "";
 
         /// <summary>Publisher of the game.</summary>
-        public string Publisher = "";
-        public decimal Price;
-        public bool Owned;
-        public bool Completed;
+        public string Publisher
+        {
+            get { return _publisher ?? ""; }
+            set { _publisher = value; }
+        }
+        private string _publisher = "";
+
+        //Calulated property
+        public bool IsCoolGame
+        {
+            get { return Publisher != "EA"; }
+        }
+          
+        //Setter only
+        //public string Password
+        //{
+        //    set { }
+        //}
+
+            public decimal Price { get; set; }
+
+        //public decimal Price
+        //{
+        //    get { return _price; }
+        //    set { _price = value; }
+        //}
+        //private decimal _price;
+
+
+        public bool Owned { get; set; } = true;
+
+        public bool Completed { get; set; }
+
+        //Mixed accessibility
+        public double Rate
+        {
+            get;
+            internal set;
+        }
+
+       
+        //Can init the data as well
+        //public string[] Genres { get; set; }
 
         
+        //private string[] Genres
+        //{
+        //    get 
+        //    {
+        //        var temp = new string[_genres.Length];
+        //        Array.Copy(_genres, temp, _genres.Length);
+        //        return temp;
+
+        //    }
+        //}
+        //private string[] _genres;
         //public string[] genres = new string[10];
         //private decimal realPrice = Price;
 
-            /// <summary>Validate the object
-            /// <returns></returns>
+        /// <summary>Validate the object
+        /// <returns></returns>
         public bool Valiate (/* Game this */)
         {
             //Redundant dude
