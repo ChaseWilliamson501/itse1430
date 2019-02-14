@@ -65,7 +65,7 @@
             // _miFileExit
             // 
             this._miFileExit.Name = "_miFileExit";
-            this._miFileExit.Size = new System.Drawing.Size(180, 22);
+            this._miFileExit.Size = new System.Drawing.Size(92, 22);
             this._miFileExit.Text = "E&xit";
             this._miFileExit.Click += new System.EventHandler(this.OnFileExit);
             // 
@@ -92,6 +92,7 @@
             this._miGameEdit.Name = "_miGameEdit";
             this._miGameEdit.Size = new System.Drawing.Size(180, 22);
             this._miGameEdit.Text = "&Edit";
+            this._miGameEdit.Click += new System.EventHandler(this.OnGameEdit);
             // 
             // toolStripSeparator1
             // 
@@ -103,6 +104,7 @@
             this._miGameDelete.Name = "_miGameDelete";
             this._miGameDelete.Size = new System.Drawing.Size(180, 22);
             this._miGameDelete.Text = "&Delete";
+            this._miGameDelete.Click += new System.EventHandler(this.OnGameDelete);
             // 
             // helpToolStripMenuItem
             // 
@@ -115,7 +117,7 @@
             // _miHelpAbout
             // 
             this._miHelpAbout.Name = "_miHelpAbout";
-            this._miHelpAbout.Size = new System.Drawing.Size(180, 22);
+            this._miHelpAbout.Size = new System.Drawing.Size(107, 22);
             this._miHelpAbout.Text = "&About";
             this._miHelpAbout.Click += new System.EventHandler(this.OnHelpAbout);
             // 
