@@ -59,11 +59,6 @@ namespace GameManager.Host.Winforms
             Close();
         }
 
-        private void fileToolStripMenuItem_Click( object sender, EventArgs e )
-        {
-
-        }
-
         private void OnHelpAbout( object sender, EventArgs e )
         {
             MessageBox.Show("Help");

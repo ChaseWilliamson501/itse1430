@@ -17,9 +17,17 @@ namespace CharacterCreator.WinForms
             InitializeComponent();
         }
 
-        private void MainForm_Load( object sender, EventArgs e )
-        {
 
+        private void OnFileExit( object sender, EventArgs e )
+        {
+            this.Close();
+        }
+
+        private void aboutToolStripMenuItem_Click( object sender, EventArgs e )
+        {
+            MessageBox.Show("Help");
+            var form = new AboutBox();
+            form.ShowDialog();
         }
     }
 }
