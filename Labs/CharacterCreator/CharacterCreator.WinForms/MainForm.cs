@@ -23,7 +23,7 @@ namespace CharacterCreator.WinForms
             this.Close();
         }
 
-        private void aboutToolStripMenuItem_Click( object sender, EventArgs e )
+        private void OnHelpAbout( object sender, EventArgs e )
         {
             MessageBox.Show("Help");
             var form = new AboutBox();
