@@ -46,7 +46,7 @@ namespace GameManager.Host.Winforms
             //var str = game.Publisher;
             //Decimal.TryParse("45.99", out game.Price);
 
-            _miGameAdd.Click += new EventHandler(OnGameAdd);
+            //_miGameAdd.Click += new EventHandler(OnGameAdd);
 
         }
 
@@ -66,6 +66,22 @@ namespace GameManager.Host.Winforms
             form.ShowDialog();
         }
 
+        private void BindList ()
+        {
+            //Bind games to listbox
+            _ListGames.Items.Clear();
+
+            //nameof(Game.Name) == "Name"
+            _ListGames.DisplayMember = nameof(Game.Name);
+
+            //_ListGames.Items.AddRange(_game)
+            foreach (var game in _games)
+            {
+                if(game != null)
+                _ListGames.Items.Add(game);
+            }
+        }
+
         private void OnGameAdd( object sender, EventArgs e )
         {
             
@@ -79,11 +95,22 @@ namespace GameManager.Host.Winforms
             if (form.ShowDialog(this) != DialogResult.OK)
                 return;
 
-            //If Ok then "add" to system
-            _game = form.Game;
+            //TODO add
+            _games[GetNextEmptyGame()] = form.Game;
+            BindList();
         }
 
-        private Game _game;
+        //HACK: Find first spot with no game
+        private int GetNextEmptyGame ()
+        {
+            for (var index = 0; index < _games.Length; ++index)
+                if (_games[index] == null)
+                    return index;
+
+            return -1;
+        }
+
+        private Game[] _games = new Game[100];
         
        
 
@@ -92,13 +119,31 @@ namespace GameManager.Host.Winforms
          
             var form = new GameForm();
 
+            var game = GetSelectedGame();
+            if (game == null)
+                return;
+
             //Game to edit
-            form.Game = _game;
+            form.Game = game;
             
             if (form.ShowDialog(this) != DialogResult.OK)
                 return;
 
-            _game = form.Game;
+            //TODO: Fix to edit, not add
+            UpdateGame(game, form.Game);
+           
+            BindList();
+        }
+        private void UpdateGame (Game oldGame, Game newGame)
+        {
+            for (var index = 0; index < _games.Length; ++index)
+            {
+                if (_games[index] == oldGame)
+                {
+                    _games[index] = newGame;
+                    break;
+                };
+            };
         }
 
         private void OnGameDelete( object sender, EventArgs e )
@@ -114,12 +159,46 @@ namespace GameManager.Host.Winforms
                 return;
 
             //TODO: DELETE
-            _game = null;
+            DeleteGame(selected);
+            BindList();
+        }
+
+        private void DeleteGame (Game game)
+        {
+            for (var index = 0; index < _games.Length; ++index)
+            {
+                
+                
+                    if(_games[index]==game)
+                    {
+                        _games[index] = null;
+                    }
+                
+            }
         }
 
         private Game GetSelectedGame ()
         {
-            return _game;
+            // How to typecast in C#
+
+            var value = _ListGames.SelectedItem;
+
+            //C-style cast - don't do this
+            //var game = (Game)value; // Game = DataType, value = Expression
+
+            //Preferred - null if not valid
+            var game = value as Game;  // Expression as DataType
+
+            //Type check 
+            var game2 = (value is Game) ? (Game)value : null; // Expression is DataType --> bool
+
+            return _ListGames.SelectedItem as Game;
+            
+        }
+
+        private void OnGameSelected( object sender, EventArgs e )
+        {
+
         }
     }
 }

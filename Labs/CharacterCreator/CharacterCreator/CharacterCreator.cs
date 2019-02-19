@@ -8,10 +8,10 @@ namespace CharacterCreator
 {
     public class Character
     {
-        public string heroName { get; set; }
-        public string heroProfession { get; set; }
-        public string heroRace { get; set; }
-        public int heroAttributes { get; set; }
+        public string Name { get; set; }
+        public string Fighter { get; set; }
+        public string Dwarf { get; set; }
+        public int Strength { get; set; }
     }
    
 
