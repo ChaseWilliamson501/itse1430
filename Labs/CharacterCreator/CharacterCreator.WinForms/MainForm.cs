@@ -29,5 +29,7 @@ namespace CharacterCreator.WinForms
             var form = new AboutBox();
             form.ShowDialog();
         }
+
+        
     }
 }
