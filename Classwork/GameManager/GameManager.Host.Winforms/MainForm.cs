@@ -31,7 +31,15 @@ namespace GameManager.Host.Winforms
             var name = game.Name;
             if (name.Length == 0)
                 /* is empty */
+
+             //Checking for null - long way
+            if (game.Name != null && game.Name.Length == 0)
                 ;
+
+            //Short way
+            if ((game.Name?.Length ?? 0) == 0)
+                ;
+
             if (game.Name.Length == 0)
                 /* is empty */
                 ;
