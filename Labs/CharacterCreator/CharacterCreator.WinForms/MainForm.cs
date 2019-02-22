@@ -30,6 +30,7 @@ namespace CharacterCreator.WinForms
             form.ShowDialog();
         }
 
-        
+        private Character[] _characters = new Character[100];
+
     }
 }
