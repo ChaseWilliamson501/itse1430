@@ -84,11 +84,21 @@ namespace GameManager
             internal set;
         }
 
-       
+        public void Foo ()
+        {
+            //Not Deterministic - should have been a method
+            var now = DateTime.Now;
+        }
+
+        public override string ToString()
+        {
+            return Name;
+        }
+
         //Can init the data as well
         //public string[] Genres { get; set; }
 
-        
+
         //private string[] Genres
         //{
         //    get 

@@ -17,10 +17,7 @@ namespace GameManager.Host.Winforms
             InitializeComponent();
         }
 
-        private void label4_Click( object sender, EventArgs e )
-        {
-
-        }
+        
 
         public Game Game { get; set; }
 
@@ -85,6 +82,5 @@ namespace GameManager.Host.Winforms
                 LoadData(Game);
             }
         }
-        
     }
 }
