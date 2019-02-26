@@ -83,7 +83,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this._txtName.Location = new System.Drawing.Point(66, 21);
             this._txtName.Name = "_txtName";
-            this._txtName.Size = new System.Drawing.Size(290, 20);
+            this._txtName.Size = new System.Drawing.Size(291, 20);
             this._txtName.TabIndex = 0;
             // 
             // _txtPublisher
@@ -92,7 +92,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this._txtPublisher.Location = new System.Drawing.Point(66, 50);
             this._txtPublisher.Name = "_txtPublisher";
-            this._txtPublisher.Size = new System.Drawing.Size(290, 20);
+            this._txtPublisher.Size = new System.Drawing.Size(291, 20);
             this._txtPublisher.TabIndex = 1;
             // 
             // _txtPrice
@@ -115,7 +115,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(200, 177);
+            this.button1.Location = new System.Drawing.Point(201, 177);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
@@ -126,7 +126,7 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(281, 177);
+            this.button2.Location = new System.Drawing.Point(282, 177);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 6;
@@ -148,7 +148,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(372, 215);
+            this.ClientSize = new System.Drawing.Size(373, 215);
             this.Controls.Add(this._cbCompleted);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
