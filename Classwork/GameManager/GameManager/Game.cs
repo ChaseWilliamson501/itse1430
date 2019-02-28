@@ -44,7 +44,7 @@ namespace GameManager
 
 
         /// <summary>Publisher of the game.</summary>
-        public string Publisher
+        public string Description
         {
             get { return _publisher ?? ""; }
             set { _publisher = value; }
@@ -54,7 +54,7 @@ namespace GameManager
         //Calulated property
         public bool IsCoolGame
         {
-            get { return Publisher != "EA"; }
+            get { return Description != "EA"; }
         }
           
         //Setter only
