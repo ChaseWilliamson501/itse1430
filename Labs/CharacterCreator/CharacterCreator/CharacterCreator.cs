@@ -9,6 +9,11 @@ namespace CharacterCreator
     public class Character
     {
         public string Name { get; set; }
+        public string Profession { get; set; }
+        public string Race { get; set; }
+
+
+
         public string Fighter { get; set; }
         public string Hunter { get; set; }
         public string Priest { get; set; }
