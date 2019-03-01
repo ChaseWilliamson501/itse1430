@@ -15,6 +15,15 @@ namespace CharacterCreator.WinForms
         public MainForm()
         {
             InitializeComponent();
+
+            LoadUI();
+        }
+
+        void LoadUI()
+        {
+            Character character = new Character();
+
+
         }
 
 

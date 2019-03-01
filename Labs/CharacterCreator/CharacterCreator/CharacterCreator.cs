@@ -8,7 +8,28 @@ namespace CharacterCreator
 {
     public class Character
     {
-        public string Name { get; set; }
+
+        public Character()
+        {
+            var x = 1 + 2;
+        }
+
+        public Character( string character )
+        {
+            Character = character;
+        }
+
+        public string Name
+        {
+            get ( return _character ?? " ";)
+            set { _character = Value; }
+        }
+
+       private string _character = "";
+
+        public string Professional { get; set; }
+        public string Race { get; set; }
+
         public string Fighter { get; set; }
         public string Hunter { get; set; }
         public string Priest { get; set; }
@@ -28,7 +49,17 @@ namespace CharacterCreator
         public int Agility { get; set; }
         public int Constitution { get; set; }
         public int Chrisma { get; set; }
+
+       public bool Valiate()
+       {
+
+           var str = this.Name;
+
+           if (String.IsNullOrEmpty(Name))
+             return false;
+
+       }
     }
    
-
+  
 }
