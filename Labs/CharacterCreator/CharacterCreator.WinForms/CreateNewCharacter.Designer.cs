@@ -34,7 +34,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this._txtName = new System.Windows.Forms.ComboBox();
             this._txtProfession = new System.Windows.Forms.ComboBox();
             this._txtRace = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -43,13 +42,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this._errors = new System.Windows.Forms.ErrorProvider(this.components);
             this._txtStrength = new System.Windows.Forms.TextBox();
             this._txtIntelligence = new System.Windows.Forms.TextBox();
             this._txtAgility = new System.Windows.Forms.TextBox();
             this._txtConstitution = new System.Windows.Forms.TextBox();
             this._txtCharisma = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this._txtName = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this._errors)).BeginInit();
             this.SuspendLayout();
             // 
             // KKKKKKKK
@@ -96,16 +96,6 @@
             this.label6.TabIndex = 8;
             this.label6.Text = "Strength";
             // 
-            // _txtName
-            // 
-            this._txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this._txtName.FormattingEnabled = true;
-            this._txtName.Location = new System.Drawing.Point(67, 6);
-            this._txtName.Name = "_txtName";
-            this._txtName.Size = new System.Drawing.Size(153, 21);
-            this._txtName.TabIndex = 2;
-            // 
             // _txtProfession
             // 
             this._txtProfession.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -115,6 +105,7 @@
             this._txtProfession.Name = "_txtProfession";
             this._txtProfession.Size = new System.Drawing.Size(121, 21);
             this._txtProfession.TabIndex = 4;
+            this._txtProfession.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateProfession);
             // 
             // _txtRace
             // 
@@ -125,6 +116,7 @@
             this._txtRace.Name = "_txtRace";
             this._txtRace.Size = new System.Drawing.Size(121, 21);
             this._txtRace.TabIndex = 7;
+            this._txtRace.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateRace);
             // 
             // button1
             // 
@@ -182,9 +174,9 @@
             this.label8.TabIndex = 16;
             this.label8.Text = "Charisma";
             // 
-            // errorProvider1
+            // _errors
             // 
-            this.errorProvider1.ContainerControl = this;
+            this._errors.ContainerControl = this;
             // 
             // _txtStrength
             // 
@@ -221,11 +213,20 @@
             this._txtCharisma.Size = new System.Drawing.Size(100, 20);
             this._txtCharisma.TabIndex = 22;
             // 
+            // _txtName
+            // 
+            this._txtName.Location = new System.Drawing.Point(67, 12);
+            this._txtName.Name = "_txtName";
+            this._txtName.Size = new System.Drawing.Size(121, 20);
+            this._txtName.TabIndex = 23;
+            this._txtName.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateName);
+            // 
             // Create_New_Character
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(394, 333);
+            this.Controls.Add(this._txtName);
             this.Controls.Add(this._txtCharisma);
             this.Controls.Add(this._txtConstitution);
             this.Controls.Add(this._txtAgility);
@@ -239,7 +240,6 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this._txtRace);
             this.Controls.Add(this._txtProfession);
-            this.Controls.Add(this._txtName);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -251,7 +251,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Create_New_Character";
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._errors)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,7 +264,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox _txtName;
         private System.Windows.Forms.ComboBox _txtProfession;
         private System.Windows.Forms.ComboBox _txtRace;
         private System.Windows.Forms.Button button1;
@@ -273,11 +272,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider _errors;
         private System.Windows.Forms.TextBox _txtCharisma;
         private System.Windows.Forms.TextBox _txtConstitution;
         private System.Windows.Forms.TextBox _txtAgility;
         private System.Windows.Forms.TextBox _txtIntelligence;
         private System.Windows.Forms.TextBox _txtStrength;
+        private System.Windows.Forms.TextBox _txtName;
     }
 }

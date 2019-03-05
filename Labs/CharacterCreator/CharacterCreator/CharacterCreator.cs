@@ -29,20 +29,6 @@ namespace CharacterCreator
 
 
 
-        //public string Fighter { get; set; }
-        //public string Hunter { get; set; }
-        //public string Priest { get; set; }
-        //public string Rogue { get; set; }
-        //public string Wizard { get; set; }
-
-
-        //public string Dwarf { get; set; }
-        //public string Elf { get; set; }
-        //public string Gnome { get; set; }
-        //public string HalfElf { get; set; }
-        //public string Human { get; set; }
-
-
         public int Strength { get; set; }
         //{
          //public decimal Price
@@ -58,15 +44,14 @@ namespace CharacterCreator
         public int Constitution { get; set; }
         public int Chrisma { get; set; }
 
-
+        // Constructor
         public Character()
         {
-            //Complex init
-            var x = 1 + 2;
+            
         }
 
 
-       // Constructor 
+        
         public Character( string name, int Strength, int Intelligence, int Agility, int Constitution, int Chrisma) // : this()
         {
             Name = name;
@@ -81,7 +66,7 @@ namespace CharacterCreator
 
 
 
-        //Mixed accessibility
+
 
         public void Foo()
         {
