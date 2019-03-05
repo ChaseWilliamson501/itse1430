@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace GameManager
 {
+   
     /// <summary>Represents a game.</summary>
     public class Game
     {
+        public int Id { get; set; }
         //Ctors
 
         // Default, no return type
@@ -16,7 +18,7 @@ namespace GameManager
         // 2)Errors are very bad
         // 3)Should behave no different than doing manually
 
-            public Game()
+        public Game()
         {
             //Complex init
             var x = 1 + 2;
@@ -44,7 +46,7 @@ namespace GameManager
 
 
         /// <summary>Publisher of the game.</summary>
-        public string Description
+        public string Publisher
         {
             get { return _publisher ?? ""; }
             set { _publisher = value; }
@@ -54,7 +56,7 @@ namespace GameManager
         //Calulated property
         public bool IsCoolGame
         {
-            get { return Description != "EA"; }
+            get { return Publisher != "EA"; }
         }
           
         //Setter only
@@ -115,7 +117,7 @@ namespace GameManager
 
         /// <summary>Validate the object
         /// <returns></returns>
-        public bool Valiate (/* Game this */)
+        public bool Validate (/* Game this */)
         {
             //Redundant dude
             var str = this.Name;
