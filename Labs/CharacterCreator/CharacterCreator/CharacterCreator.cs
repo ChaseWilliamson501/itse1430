@@ -48,18 +48,17 @@ namespace CharacterCreator
         public int Chrisma { get; set; }
 
 
-        public Character()
-        {
-            //Complex init
-            var x = 1 + 2;
-        }
+        //public Character()
+        //{
+           
+        //}
 
 
        // Constructor 
-        public Character( string name, int Strength, int Intelligence, int Agility, int Constitution, int Chrisma) // : this()
-        {
-            Name = name;
-        }
+        //public Character( string name, int Strength, int Intelligence, int Agility, int Constitution, int Chrisma) // : this()
+        //{
+        //    Name = name;
+        //}
        
 
         //Calulated property
@@ -68,9 +67,6 @@ namespace CharacterCreator
             get { return Profession != "Fighter"; }
         }
 
-
-
-        //Mixed accessibility
 
         public void Foo()
         {
