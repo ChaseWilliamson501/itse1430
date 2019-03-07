@@ -112,7 +112,7 @@ namespace CharacterCreator.WinForms
         {
             for (var index = 0; index < _characters.Length; ++index)
             {
-                if (_characters[index] == _character)
+                if (_characters[index] == oldCharacter)
                 {
                     _characters[index] = newCharacter;
                     break;

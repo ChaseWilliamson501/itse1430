@@ -111,7 +111,7 @@ namespace GameManager.Host.Winforms
                 _errors.SetError(tb, "Name is required.");
                 e.Cancel = true;
             } else
-                _errors.SetError(tb, " ");
+                _errors.SetError(tb, "");
         }
 
         private void OnValidatePrice( object sender, CancelEventArgs e )
@@ -124,7 +124,7 @@ namespace GameManager.Host.Winforms
                 _errors.SetError(tb, "Price must be >= 0.");
                 e.Cancel = true;
             }else
-            _errors.SetError(tb, " ");
+            _errors.SetError(tb, "");
         }
     }
 

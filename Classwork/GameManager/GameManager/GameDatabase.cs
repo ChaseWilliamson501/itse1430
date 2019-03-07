@@ -29,21 +29,26 @@ namespace GameManager
             Add(game);
         }
 
-        public Game Add (Game game)
+        public Game Add( Game game )
         {
             //Validate input
             if (game == null)
-           throw new ArgumentNullException(nameof(game));
+                throw new ArgumentNullException(nameof(game));
 
             //Game must be valid
             if (!game.Validate())
-                throw new Exception("Game is invalid");
-                return null;
+                throw new Exception("Game is invalid.");
 
             //Game names must be unique
             var existing = GetIndex(game.Name);
             if (existing >= 0)
-                throw new Exception("Game must be unigue.");
+                throw new Exception("Game must be unique.");
+
+            //Playing around with different exceptions
+            if (String.Compare(game.Name, "Anthem", true) == 0)
+                throw new InvalidOperationException("Only good games are allowed here.");
+            if (game.Price > 1000)
+                throw new NotImplementedException();
 
             for (var index = 0; index < _items.Length; ++index)
             {
@@ -55,12 +60,14 @@ namespace GameManager
                 };
             };
 
-
-               return game;
+            return game;
         }
 
         public void Delete( int id )
         {
+            if (id <= 0)
+                throw new ArgumentOutOfRangeException(nameof(id), "Id must be > 0.");
+
             var index = GetIndex(id);
             if (index >= 0)
                 _items[index] = null;
@@ -68,50 +75,64 @@ namespace GameManager
 
         public Game Get( int id )
         {
+            if (id <= 0)
+                throw new ArgumentOutOfRangeException(nameof(id), "Id must be > 0.");
+
             var index = GetIndex(id);
             if (index >= 0)
                 return Clone(_items[index]);
 
             return null;
         }
-        public Game[] GetAll ()
+
+        public Game[] GetAll()
         {
             //How many games?
-           
-                //How many games?
-                int count = 0;
-                foreach (var item in _items)
-                    if (item != null)
-                        ++count;
+            int count = 0;
+            foreach (var item in _items)
+                if (item != null)
+                    ++count;
 
-                var tempIndex = 0;
-                var temp = new Game[count];
-                for (var index = 0; index < _items.Length; ++index)
-                    if (_items[index] != null)
-                        temp[tempIndex++] = Clone(_items[index]);
+            var tempIndex = 0;
+            var temp = new Game[count];
+            for (var index = 0; index < _items.Length; ++index)
+                if (_items[index] != null)
+                    temp[tempIndex++] = Clone(_items[index]);
 
-                return temp;
+            return temp;
         }
 
-        public Game Update ( int id, Game game)
+        public Game Update( int id, Game game )
         {
-            var index = GetIndex(id);
-            var existing = _items[index];
+            //Validate
+            if (id <= 0)
+                throw new ArgumentOutOfRangeException(nameof(id), "Id must be > 0.");
+            if (game == null)
+                throw new ArgumentNullException(nameof(game));
+            if (!game.Validate())
+                throw new Exception("Game is invalid.");
 
-            Clone(existing, game);
+            var index = GetIndex(id);
+            if (index < 0)
+                throw new Exception("Game does not exist.");
+
+            //Game names must be unique            
+            var existingIndex = GetIndex(game.Name);
+            if (existingIndex >= 0 && existingIndex != index)
+                throw new Exception("Game must be unique.");
 
             game.Id = id;
+            var existing = _items[index];
+            Clone(existing, game);
+
+           
             return game;
         }
 
-        private Game Clone (Game game)
+        private Game Clone( Game game )
         {
             var newGame = new Game();
-            newGame.Name = game.Name;
-            newGame.Publisher = game.Publisher;
-            newGame.Price = game.Price;
-            newGame.Owned = game.Owned;
-            newGame.Completed = game.Completed;
+            Clone(newGame, game);
 
             return newGame;
         }
@@ -125,6 +146,7 @@ namespace GameManager
             target.Owned = source.Owned;
             target.Completed = source.Completed;
         }
+
         private int GetIndex( int id )
         {
             for (var index = 0; index < _items.Length; ++index)
@@ -133,6 +155,7 @@ namespace GameManager
 
             return -1;
         }
+
         private int GetIndex( string name )
         {
             for (var index = 0; index < _items.Length; ++index)
@@ -142,8 +165,8 @@ namespace GameManager
             return -1;
         }
 
-
         private readonly Game[] _items = new Game[100];
         private int _nextId = 0;
     }
 }
+
