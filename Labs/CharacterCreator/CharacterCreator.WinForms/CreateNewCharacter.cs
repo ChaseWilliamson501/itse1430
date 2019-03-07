@@ -30,7 +30,7 @@ namespace CharacterCreator.WinForms
             // Validate at business level
             if (!character.Validate())
             {
-                MessageBox.Show("Game not valid.", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("Character not valid.", "Error", MessageBoxButtons.OK);
                 return;
             };
 
@@ -146,4 +146,4 @@ namespace CharacterCreator.WinForms
     }
 
 }
-}
+

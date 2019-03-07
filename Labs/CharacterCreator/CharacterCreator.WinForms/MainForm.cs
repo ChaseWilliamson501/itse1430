@@ -56,13 +56,13 @@ namespace CharacterCreator.WinForms
             _ListOfCharacters.Items.Clear();
 
             //nameof(Game.Name) == "Name"
-            _ListCharacters.DisplayMember = nameof(Character.Name);
+            _ListOfCharacters.DisplayMember = nameof(Character.Name);
 
             //_ListGames.Items.AddRange(_game)
             foreach (var character in _characters)
             {
                 if (character != null)
-                    _ListCharacters.Items.Add(character);
+                    _ListOfCharacters.Items.Add(character);
             }
         }
 
