@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CharacterCreator.WinForms
 {
-    public partial class Create_New_Character : Form
+    public partial class CreateNewCharacterForm : Form
     {
-        public Create_New_Character()
+        public CreateNewCharacterForm()
         {
             InitializeComponent();
         }
@@ -121,15 +121,6 @@ namespace CharacterCreator.WinForms
                 _errors.SetError(tb, " ");
         }
 
-        private void OnValidateProfession( object sender, CancelEventArgs e )
-        {
-            
-        }
-
-        private void OnValidateRace( object sender, CancelEventArgs e )
-        {
-
-        }
 
         private void OnValidateAttributes( object sender, CancelEventArgs e )
         {

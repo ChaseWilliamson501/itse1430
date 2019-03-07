@@ -91,10 +91,10 @@ namespace CharacterCreator.WinForms
 
         private void OnGameEdit( object sender, EventArgs e )
         {
-            var form = new Create_New_Character();
+            var form = new CreateNewCharacterForm();
 
-            var game = GetSelectedGame();
-            if (game == null)
+            var character = GetSelectedGame();
+            if (character == null)
                 return;
 
             //Game to edit
@@ -104,7 +104,7 @@ namespace CharacterCreator.WinForms
                 return;
 
             //TODO: Fix to edit, not add
-            UpdateGame(game, form.Character);
+            UpdateGame(character, form.Character);
 
             BindList();
         }
