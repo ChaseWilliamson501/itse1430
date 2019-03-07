@@ -43,13 +43,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this._errors = new System.Windows.Forms.ErrorProvider(this.components);
             this._txtStrength = new System.Windows.Forms.TextBox();
             this._txtIntelligence = new System.Windows.Forms.TextBox();
             this._txtAgility = new System.Windows.Forms.TextBox();
             this._txtConstitution = new System.Windows.Forms.TextBox();
             this._txtCharisma = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._errors)).BeginInit();
             this.SuspendLayout();
             // 
             // KKKKKKKK
@@ -105,6 +105,7 @@
             this._txtName.Name = "_txtName";
             this._txtName.Size = new System.Drawing.Size(153, 21);
             this._txtName.TabIndex = 2;
+            this._txtName.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateName);
             // 
             // _txtProfession
             // 
@@ -182,9 +183,9 @@
             this.label8.TabIndex = 16;
             this.label8.Text = "Charisma";
             // 
-            // errorProvider1
+            // _errors
             // 
-            this.errorProvider1.ContainerControl = this;
+            this._errors.ContainerControl = this;
             // 
             // _txtStrength
             // 
@@ -251,7 +252,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Create_New_Character";
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._errors)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,7 +274,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider _errors;
         private System.Windows.Forms.TextBox _txtCharisma;
         private System.Windows.Forms.TextBox _txtConstitution;
         private System.Windows.Forms.TextBox _txtAgility;

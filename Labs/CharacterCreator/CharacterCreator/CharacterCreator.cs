@@ -29,18 +29,7 @@ namespace CharacterCreator
 
 
 
-        //public string Fighter { get; set; }
-        //public string Hunter { get; set; }
-        //public string Priest { get; set; }
-        //public string Rogue { get; set; }
-        //public string Wizard { get; set; }
-
-
-        //public string Dwarf { get; set; }
-        //public string Elf { get; set; }
-        //public string Gnome { get; set; }
-        //public string HalfElf { get; set; }
-        //public string Human { get; set; }
+      
 
 
         public int Strength { get; set; }
@@ -97,7 +86,7 @@ namespace CharacterCreator
 
         /// <summary>Validate the object
         /// <returns></returns>
-        public bool Valiate(/* Game this */)
+        public bool Validate(/* Game this */)
         {
             //Redundant dude
             var str = this.Name;

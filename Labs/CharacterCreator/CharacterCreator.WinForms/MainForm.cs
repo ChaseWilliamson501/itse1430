@@ -45,7 +45,7 @@ namespace CharacterCreator.WinForms
             var isCool = character.IsCoolCharacter;
 
             //Validate(game)
-            character.Valiate();
+            character.Validate();
 
 
         }
@@ -53,7 +53,7 @@ namespace CharacterCreator.WinForms
         private void BindList()
         {
             //Bind games to listbox
-            _ListCharacters.Items.Clear();
+            _ListOfCharacters.Items.Clear();
 
             //nameof(Game.Name) == "Name"
             _ListCharacters.DisplayMember = nameof(Character.Name);
@@ -155,7 +155,7 @@ namespace CharacterCreator.WinForms
         {
             // How to typecast in C#
 
-            var value = _ListCharacters.SelectedItem;
+            var value = _ListOfCharacters.SelectedItem;
 
             //C-style cast - don't do this
             //var game = (Game)value; // Game = DataType, value = Expression
@@ -166,7 +166,7 @@ namespace CharacterCreator.WinForms
             //Type check 
             var game2 = (value is Character) ? (Character)value : null; // Expression is DataType --> bool
 
-            return _ListCharacters.SelectedItem as Character;
+            return _ListOfCharacters.SelectedItem as Character;
 
         }
 

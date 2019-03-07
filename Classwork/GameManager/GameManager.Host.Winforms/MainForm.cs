@@ -22,8 +22,7 @@ namespace GameManager.Host.Winforms
         void LoadUI()
         {
             Game game = new Game();
-
-
+               
 
             game.Name = "Star Wars FU";
             game.Price = 59.99M;

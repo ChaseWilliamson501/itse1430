@@ -28,7 +28,7 @@ namespace CharacterCreator.WinForms
 
 
             // Validate at business level
-            if (!character.Valiate())
+            if (!character.Validate())
             {
                 MessageBox.Show("Game not valid.", "Error", MessageBoxButtons.OK);
                 return;
