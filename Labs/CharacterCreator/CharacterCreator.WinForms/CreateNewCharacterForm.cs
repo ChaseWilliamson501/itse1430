@@ -45,6 +45,7 @@ namespace CharacterCreator.WinForms
             Close();
         }
 
+
         private int ReadInt( TextBox control )
         {
             if (control.Text.Length == 0)
@@ -65,7 +66,7 @@ namespace CharacterCreator.WinForms
             _txtIntelligence.Text = character.Intelligence.ToString();
             _txtAgility.Text = character.Agility.ToString();
             _txtConstitution.Text = character.Constitution.ToString();
-            _txtCharisma.Text = character.Chrisma.ToString();
+            _txtCharisma.Text = character.Charisma.ToString();
 
         }
         //Saves UI into new game
@@ -80,7 +81,7 @@ namespace CharacterCreator.WinForms
             character.Intelligence = ReadInt(_txtIntelligence);
             character.Agility = ReadInt(_txtAgility);
             character.Constitution = ReadInt(_txtConstitution);
-            character.Chrisma = ReadInt(_txtCharisma);
+            character.Charisma = ReadInt(_txtCharisma);
 
 
 
@@ -118,7 +119,7 @@ namespace CharacterCreator.WinForms
                 _errors.SetError(tb, "Name is required.");
                 e.Cancel = true;
             } else
-                _errors.SetError(tb, " ");
+                _errors.SetError(tb, "");
         }
 
 
@@ -126,14 +127,16 @@ namespace CharacterCreator.WinForms
         {
             var tb = sender as TextBox;
 
-            var price = ReadInt(tb);
-            if (price < 0)
+            var attributes = ReadInt(tb);
+            if (attributes < 50)
             {
-                _errors.SetError(tb, "Price must be >= 0.");
+                _errors.SetError(tb, "The attribute must be >= 50.");
                 e.Cancel = true;
             } else
-                _errors.SetError(tb, " ");
+                _errors.SetError(tb, "");
         }
+
+        
     }
 
 }

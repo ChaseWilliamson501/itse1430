@@ -17,62 +17,76 @@ namespace CharacterCreator
         //private string _name = "";
 
 
-        /// <summary>Profession of the Character.</summary>
-        public string Profession { get; set; }
+/// <summary>Profession of the Character.</summary>
+public string Profession { get; set; }
+    //    {
+    //        get { return _Profession ?? ""; }
+    //        set { _Profession = value; }
+    //    }
+    //    private string _Profession = "";
+
+public string Race { get; set; }
+
         //{
-        //    get { return _publisher ?? ""; }
-        //    set { _publisher = value; }
+        //    get { return _race ?? ""; }
+        //    set { _race = value; }
         //}
-        //private string _publisher = "";
-
-        public string Race { get; set; }
-
-
-
-      
+        //private string _race = "";
 
 
         public int Strength { get; set; }
+         
         //{
-         //public decimal Price
-        //{
-        //    get { return _price; }
-        //    set { _price = value; }
+        //    get { return _strength; }
+        //    set { _strength = value; }
         //}
-        //private decimal _price;
+        //private decimal _strength = "";
 
-        // }
         public int Intelligence { get; set; }
+
+        //{
+        //    get { return _intelligence; }
+        //    set { _intelligence = value; }
+        //}
+        //private decimal _intelligence = "";
+
         public int Agility { get; set; }
+
+        //{
+        //    get { return _agility; }
+        //    set { _agility = value; }
+        //}
+        //private int _agility = "";
+
         public int Constitution { get; set; }
-        public int Chrisma { get; set; }
 
-
-        //public Character()
         //{
-           
+        //    get { return _constitution; }
+        //    set { _constitution = value; }
         //}
+        //private decimal _constitution = "";
 
+        public int Charisma { get; set; }
 
-       // Constructor 
-        //public Character( string name, int Strength, int Intelligence, int Agility, int Constitution, int Chrisma) // : this()
         //{
-        //    Name = name;
+        //    get { return _Charisma; }
+        //    set { _charisma = value; }
         //}
-       
+        //private int _charisma = "";
 
-        //Calulated property
-        public bool IsCoolCharacter
+
+        public Character()
         {
-            get { return Profession != "Fighter"; }
+
         }
 
 
-        public void Foo()
+        //Constructor
+        public Character( string name, int Strength, int Intelligence, int Agility, int Constitution, int Chrisma ) // : this()
         {
-            //Not Deterministic - should have been a method
-            var now = DateTime.Now;
+            Name = name;
         }
+
 
         public override string ToString()
         {
@@ -91,12 +105,21 @@ namespace CharacterCreator
             if (String.IsNullOrEmpty(Name))
                 return false;
 
-            // Price >= 0
-            //if (Price < 0)
+           
+            if (Strength < 0)
                 return false;
 
-            //Only if you need to pass the instance to someboby else
-            //MyType.foo(this);
+            if (Intelligence < 0)
+                return false;
+
+            if (Agility < 0)
+                return false;
+
+            if (Constitution < 0)
+                return false;
+
+            if (Charisma < 0)
+                return false;
 
             return true;
 

@@ -100,7 +100,14 @@
             // 
             this._txtProfession.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this._txtProfession.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._txtProfession.FormattingEnabled = true;
+            this._txtProfession.Items.AddRange(new object[] {
+            "Fighter",
+            "Hunter",
+            "Priest",
+            "Rogue",
+            "Wizard"});
             this._txtProfession.Location = new System.Drawing.Point(67, 35);
             this._txtProfession.Name = "_txtProfession";
             this._txtProfession.Size = new System.Drawing.Size(121, 21);
@@ -110,7 +117,14 @@
             // 
             this._txtRace.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this._txtRace.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._txtRace.FormattingEnabled = true;
+            this._txtRace.Items.AddRange(new object[] {
+            "Dwarf",
+            "Elf",
+            "Gnome",
+            "Half Elf",
+            "Human"});
             this._txtRace.Location = new System.Drawing.Point(67, 62);
             this._txtRace.Name = "_txtRace";
             this._txtRace.Size = new System.Drawing.Size(121, 21);
@@ -125,6 +139,7 @@
             this.button1.TabIndex = 11;
             this.button1.Text = "&Save";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.OnSave);
             // 
             // button2
             // 
@@ -135,6 +150,7 @@
             this.button2.TabIndex = 12;
             this.button2.Text = "&Cancel";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.OnCancel);
             // 
             // label2
             // 
@@ -174,6 +190,7 @@
             // 
             // _errors
             // 
+            this._errors.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this._errors.ContainerControl = this;
             // 
             // _txtStrength
@@ -182,6 +199,7 @@
             this._txtStrength.Name = "_txtStrength";
             this._txtStrength.Size = new System.Drawing.Size(100, 20);
             this._txtStrength.TabIndex = 18;
+            this._txtStrength.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateAttributes);
             // 
             // _txtIntelligence
             // 
@@ -189,6 +207,7 @@
             this._txtIntelligence.Name = "_txtIntelligence";
             this._txtIntelligence.Size = new System.Drawing.Size(100, 20);
             this._txtIntelligence.TabIndex = 19;
+            this._txtIntelligence.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateAttributes);
             // 
             // _txtAgility
             // 
@@ -196,6 +215,7 @@
             this._txtAgility.Name = "_txtAgility";
             this._txtAgility.Size = new System.Drawing.Size(100, 20);
             this._txtAgility.TabIndex = 20;
+            this._txtAgility.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateAttributes);
             // 
             // _txtConstitution
             // 
@@ -203,6 +223,7 @@
             this._txtConstitution.Name = "_txtConstitution";
             this._txtConstitution.Size = new System.Drawing.Size(100, 20);
             this._txtConstitution.TabIndex = 21;
+            this._txtConstitution.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateAttributes);
             // 
             // _txtCharisma
             // 
@@ -210,6 +231,7 @@
             this._txtCharisma.Name = "_txtCharisma";
             this._txtCharisma.Size = new System.Drawing.Size(100, 20);
             this._txtCharisma.TabIndex = 22;
+            this._txtCharisma.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateAttributes);
             // 
             // _txtName
             // 
@@ -217,8 +239,9 @@
             this._txtName.Name = "_txtName";
             this._txtName.Size = new System.Drawing.Size(121, 20);
             this._txtName.TabIndex = 23;
+            this._txtName.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateName);
             // 
-            // Create_New_Character
+            // CreateNewCharacterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -244,7 +267,7 @@
             this.Controls.Add(this.KKKKKKKK);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Create_New_Character";
+            this.Name = "CreateNewCharacterForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Create_New_Character";

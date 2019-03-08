@@ -23,31 +23,12 @@ namespace CharacterCreator.WinForms
         {
             Character character = new Character();
 
-           
-
             var name = character.Name;
-            if (name.Length == 0)
-                /* is empty */
 
-                //Checking for null - long way
-                if (character.Name != null && character.Name.Length == 0)
-                    ;
-
-            //Short way
-            if ((character.Name?.Length ?? 0) == 0)
-                ;
-
-            if (character.Name.Length == 0)
-                /* is empty */
-                ;
-
-
-            var isCool = character.IsCoolCharacter;
-
-            //Validate(game)
+            //Validate(character)
             character.Validate();
 
-
+   
         }
 
         private void BindList()
@@ -58,12 +39,27 @@ namespace CharacterCreator.WinForms
             //nameof(Game.Name) == "Name"
             _ListOfCharacters.DisplayMember = nameof(Character.Name);
 
-            //_ListGames.Items.AddRange(_game)
             foreach (var character in _characters)
             {
                 if (character != null)
                     _ListOfCharacters.Items.Add(character);
             }
+        }
+
+        private void OnCharacterNew( object sender, EventArgs e )
+        {
+            //Display UI
+            var form = new CreateNewCharacterForm();
+
+            if (form.ShowDialog(this) != DialogResult.OK)
+                return;
+
+            BindList();
+        }
+
+        private void DisplayError( Exception ex )
+        {
+            MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void OnFileExit( object sender, EventArgs e )
@@ -78,7 +74,7 @@ namespace CharacterCreator.WinForms
             form.ShowDialog();
         }
 
-        private int GetNextEmptyGame()
+        private int GetNextEmptyCharacter()
         {
             for (var index = 0; index < _characters.Length; ++index)
                 if (_characters[index] == null)
@@ -89,11 +85,11 @@ namespace CharacterCreator.WinForms
 
         private Character[] _characters = new Character[100];
 
-        private void OnGameEdit( object sender, EventArgs e )
+        private void OnCharacterEdit( object sender, EventArgs e )
         {
             var form = new CreateNewCharacterForm();
 
-            var character = GetSelectedGame();
+            var character = GetSelectedCharacter();
             if (character == null)
                 return;
 
@@ -104,11 +100,11 @@ namespace CharacterCreator.WinForms
                 return;
 
             //TODO: Fix to edit, not add
-            UpdateGame(character, form.Character);
+            UpdateCharacter(character, form.Character);
 
             BindList();
         }
-        private void UpdateGame( Character oldCharacter, Character newCharacter )
+        private void UpdateCharacter( Character oldCharacter, Character newCharacter )
         {
             for (var index = 0; index < _characters.Length; ++index)
             {
@@ -120,10 +116,10 @@ namespace CharacterCreator.WinForms
             };
         }
 
-        private void OnGameDelete( object sender, EventArgs e )
+        private void OnCharacterDelete( object sender, EventArgs e )
         {
             //Get selected game, if any
-            var selected = GetSelectedGame();
+            var selected = GetSelectedCharacter();
             if (selected == null)
                 return;
 
@@ -133,11 +129,11 @@ namespace CharacterCreator.WinForms
                 return;
 
             //TODO: DELETE
-            DeleteGame(selected);
+            DeleteCharacter(selected);
             BindList();
         }
 
-        private void DeleteGame( Character character )
+        private void DeleteCharacter( Character character )
         {
             for (var index = 0; index < _characters.Length; ++index)
             {
@@ -151,7 +147,7 @@ namespace CharacterCreator.WinForms
             }
         }
 
-        private Character GetSelectedGame()
+        private Character GetSelectedCharacter()
         {
             // How to typecast in C#
 
@@ -161,10 +157,10 @@ namespace CharacterCreator.WinForms
             //var game = (Game)value; // Game = DataType, value = Expression
 
             //Preferred - null if not valid
-            var game = value as Character;  // Expression as DataType
+            var character = value as Character;  // Expression as DataType
 
             //Type check 
-            var game2 = (value is Character) ? (Character)value : null; // Expression is DataType --> bool
+            var character2 = (value is Character) ? (Character)value : null; // Expression is DataType --> bool
 
             return _ListOfCharacters.SelectedItem as Character;
 
