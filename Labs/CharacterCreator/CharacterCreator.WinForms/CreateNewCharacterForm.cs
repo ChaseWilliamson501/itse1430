@@ -130,7 +130,7 @@ namespace CharacterCreator.WinForms
             var attributes = ReadInt(tb);
             if (attributes < 50)
             {
-                _errors.SetError(tb, "The attribute must be >= 50.");
+                _errors.SetError(tb, "The attribute must be between 1 or 100.");
                 e.Cancel = true;
             } else
                 _errors.SetError(tb, "");

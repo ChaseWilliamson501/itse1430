@@ -116,15 +116,13 @@ public string Profession { get; set; }
         /// <returns></returns>
         public bool Validate(/* Game this */)
         {
-            //Redundant dude
-            var str = this.Name;
 
             // Name is required
             if (String.IsNullOrEmpty(Name))
                 return false;
 
            
-            if (Strength < 0)
+            if (Strength < 1 || Strength > 100)
                 return false;
 
             if (Intelligence < 0)
