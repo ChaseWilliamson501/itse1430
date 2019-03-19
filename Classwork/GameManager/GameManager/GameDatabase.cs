@@ -10,23 +10,42 @@ namespace GameManager
     {
         public GameDatabase()
         {
-            var game = new Game();
-            game.Name = "DOOM";
-            game.Publisher = "Space Marine";
-            game.Price = 49.99M;
-            Add(game);
+            //var game = new Game();
+            //game.Name = "DOOM";
+            //game.Description = "Space Marine";
+            //game.Price = 49.99M;
 
-            game = new Game();
-            game.Name = "Oblivion";
-            game.Publisher = "Medieval";
-            game.Price = 89.99M;
-            Add(game);
+            //Object initializer
+            //var game = new Game() {
+            //    Name = "DOOM",
+            //    Publisher = "Space Marine",
+            //    Price = 49.99M
+            //};
+            //Add(game);
 
-            game = new Game();
-            game.Name = "Fallout 76";
-            game.Publisher = "Failed MMO";
-            game.Price = 0.01M;
-            Add(game);
+            //game = new Game() {
+            //    Name = "Oblivion",
+            //    Publisher = "Medieval",
+            //    Price = 89.99M,
+            //};
+            //Add(game);
+
+            //Add(new Game() {
+            //    Name = "Fallout 76",
+            //    Publisher = "Failed MMO",
+            //    Price = 0.01M
+            //});
+
+            //Collection initializer
+            var games = new []
+                 {
+                    new Game() { Name = "DOOM", Publisher = "Space Marine", Price = 49.99M },
+                    new Game() { Name = "Oblivion", Publisher = "Medieval", Price = 89.99M },
+                    new Game() { Name = "Fallout 76", Publisher = "Failed MMO", Price = 0.01M }
+                 };
+
+            foreach (var game in games)
+                Add(game);
         }
 
         public Game Add( Game game )
@@ -45,20 +64,22 @@ namespace GameManager
                 throw new Exception("Game must be unique.");
 
             //Playing around with different exceptions
-            if (String.Compare(game.Name, "Anthem", true) == 0)
-                throw new InvalidOperationException("Only good games are allowed here.");
-            if (game.Price > 1000)
-                throw new NotImplementedException();
+            //if (String.Compare(game.Name, "Anthem", true) == 0)
+            //    throw new InvalidOperationException("Only good games are allowed here.");
+            //if (game.Price > 1000)
+            //    throw new NotImplementedException();
 
-            for (var index = 0; index < _items.Length; ++index)
-            {
-                if (_items[index] == null)
-                {
-                    game.Id = ++_nextId;
-                    _items[index] = Clone(game);
-                    break;
-                };
-            };
+            //for (var index = 0; index < _items.Length; ++index)
+            //{
+            //    if (_items[index] == null)
+            //    {
+            //        game.Id = ++_nextId;
+            //        _items[index] = Clone(game);
+            //        break;
+            //    };
+            //};
+            game.Id = ++_nextId;
+            _items.Add(Clone(game));
 
             return game;
         }
@@ -70,7 +91,8 @@ namespace GameManager
 
             var index = GetIndex(id);
             if (index >= 0)
-                _items[index] = null;
+                _items.RemoveAt(index);
+            //_items[index] = null;
         }
 
         public Game Get( int id )
@@ -87,19 +109,24 @@ namespace GameManager
 
         public Game[] GetAll()
         {
+
+
             //How many games?
-            int count = 0;
+            //int count = 0;
+            //foreach (var item in _items)
+            //    if (item != null)
+            //        ++count;
+
+            //var tempIndex = 0;
+            //var temp = new Game[count];
+            //for (var index = 0; index < _items.Length; ++index)
+            //    if (_items[index] != null)
+            //        temp[tempIndex++] = Clone(_items[index]);
+            var temp = new List<Game>();
             foreach (var item in _items)
-                if (item != null)
-                    ++count;
+                temp.Add(Clone(item));
 
-            var tempIndex = 0;
-            var temp = new Game[count];
-            for (var index = 0; index < _items.Length; ++index)
-                if (_items[index] != null)
-                    temp[tempIndex++] = Clone(_items[index]);
-
-            return temp;
+            return temp.ToArray();
         }
 
         public Game Update( int id, Game game )
@@ -125,7 +152,7 @@ namespace GameManager
             var existing = _items[index];
             Clone(existing, game);
 
-           
+
             return game;
         }
 
@@ -149,7 +176,7 @@ namespace GameManager
 
         private int GetIndex( int id )
         {
-            for (var index = 0; index < _items.Length; ++index)
+            for (var index = 0; index < _items.Count; ++index)
                 if (_items[index]?.Id == id)
                     return index;
 
@@ -158,14 +185,22 @@ namespace GameManager
 
         private int GetIndex( string name )
         {
-            for (var index = 0; index < _items.Length; ++index)
+            for (var index = 0; index < _items.Count; ++index)
                 if (String.Compare(_items[index]?.Name, name, true) == 0)
                     return index;
 
             return -1;
         }
 
-        private readonly Game[] _items = new Game[100];
+        //Arrays are so 90s
+        //private readonly Game[] _items = new Game[100];
+
+        //ArrayLists are so 00s
+        //private readonly ArrayList _items = new ArrayList();
+
+        private readonly List<Game> _items = new List<Game>();
+        //private readonly Collection<Game> _items = new Collection<Game>();
+
         private int _nextId = 0;
     }
 }

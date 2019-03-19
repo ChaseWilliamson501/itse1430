@@ -19,13 +19,16 @@ namespace CharacterCreator
 
 /// <summary>Profession of the Character.</summary>
 public string Profession { get; set; }
-    //    {
-    //        get { return _Profession ?? ""; }
-    //        set { _Profession = value; }
-    //    }
-    //    private string _Profession = "";
+        //    {
+        //        get { return _Profession ?? ""; }
+        //        set { _Profession = value; }
+        //    }
+        //    private string _Profession = "";
 
-public string Race { get; set; }
+        /// <summary>
+        /// Name of the Race.
+        /// </summary>
+        public string Race { get; set; }
 
         //{
         //    get { return _race ?? ""; }
@@ -33,15 +36,21 @@ public string Race { get; set; }
         //}
         //private string _race = "";
 
-
+        /// <summary>
+        /// Name of the Strength.
+        /// </summary>
         public int Strength { get; set; }
-         
+
         //{
         //    get { return _strength; }
         //    set { _strength = value; }
         //}
         //private decimal _strength = "";
 
+
+        /// <summary>
+        /// Name of the Intelligence.
+        /// </summary>
         public int Intelligence { get; set; }
 
         //{
@@ -50,6 +59,9 @@ public string Race { get; set; }
         //}
         //private decimal _intelligence = "";
 
+        /// <summary>
+        /// Name of the Agility.
+        /// </summary>
         public int Agility { get; set; }
 
         //{
@@ -58,6 +70,9 @@ public string Race { get; set; }
         //}
         //private int _agility = "";
 
+        /// <summary>
+        /// Name of the Constitution.
+        /// </summary>
         public int Constitution { get; set; }
 
         //{
@@ -66,6 +81,9 @@ public string Race { get; set; }
         //}
         //private decimal _constitution = "";
 
+        /// <summary>
+        /// Name of the Charisma.
+        /// </summary>
         public int Charisma { get; set; }
 
         //{

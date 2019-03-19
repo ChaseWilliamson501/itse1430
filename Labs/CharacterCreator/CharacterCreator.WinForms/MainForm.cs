@@ -31,12 +31,13 @@ namespace CharacterCreator.WinForms
    
         }
 
+        /// <summary>
+        /// Bind the new Character to the _ListOfCharacters
+        /// </summary>
         private void BindList()
         {
             //Bind games to listbox
             _ListOfCharacters.Items.Clear();
-
-            //nameof(Game.Name) == "Name"
             _ListOfCharacters.DisplayMember = nameof(Character.Name);
 
             foreach (var character in _characters)
@@ -46,6 +47,7 @@ namespace CharacterCreator.WinForms
             }
         }
 
+
         private void OnCharacterNew( object sender, EventArgs e )
         {
             //Display UI
@@ -54,6 +56,15 @@ namespace CharacterCreator.WinForms
             if (form.ShowDialog(this) != DialogResult.OK)
                 return;
 
+            for (var index = 0; index < _characters.Length; ++index)
+            {
+               if (_characters[index] == null)
+                {
+                    _characters[index] = form.Character;
+                    break;
+                }
+                        
+            }
             BindList();
         }
 
