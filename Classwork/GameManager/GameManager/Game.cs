@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,8 +9,9 @@ namespace GameManager
 {
    
     /// <summary>Represents a game.</summary>
-    public class Game
+    public class Game : IValidatableObject
     {
+        
         public int Id { get; set; }
         //Ctors
 
@@ -117,24 +119,22 @@ namespace GameManager
 
         /// <summary>Validate the object
         /// <returns></returns>
-        public bool Validate (/* Game this */)
+        
+
+        public IEnumerable<ValidationResult> Validate( ValidationContext validationContext )
         {
-            //Redundant dude
-            var str = this.Name;
+            var items = new List<ValidationResult>();
 
             // Name is required
-           if (String.IsNullOrEmpty(Name))
-                return false;
+            if (String.IsNullOrEmpty(Name))
+                items.Add(new ValidationResult("Name is required.", new[] { nameof(Name) }));
 
             // Price >= 0
             if (Price < 0)
-                return false;
+                items.Add(new ValidationResult("Price must be >= 0.", new[] { nameof(Price) }));
 
-            //Only if you need to pass the instance to someboby else
-            //MyType.foo(this);
 
-            return true;
-
+            return items;
         }
     }
 }

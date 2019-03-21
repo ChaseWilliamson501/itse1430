@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -30,11 +31,19 @@ namespace GameManager.Host.Winforms
 
 
             // Validate at business level
-            if (!game.Validate())
+            try
             {
-                MessageBox.Show("Game not valid.", "Error", MessageBoxButtons.OK);
+                new ObjectValidator().Validate(game);
+            } catch (ValidationException)
+            {
+                MessageBox.Show(this, "Game not valid.", "Error", MessageBoxButtons.OK);
                 return;
             };
+            //if (!game.Validate())
+            //{
+            //    MessageBox.Show("Game not valid.", "Error", MessageBoxButtons.OK);
+            //    return;
+            //};
 
             Game = game;
             DialogResult = DialogResult.OK;

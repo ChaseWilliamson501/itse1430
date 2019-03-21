@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace GameManager
 {
-    public class GameDatabase
+    
+    public class GameDatabase : IGameDatabase
     {
         public GameDatabase()
         {
@@ -55,8 +56,10 @@ namespace GameManager
                 throw new ArgumentNullException(nameof(game));
 
             //Game must be valid
-            if (!game.Validate())
-                throw new Exception("Game is invalid.");
+            new ObjectValidator().Validate(game);
+
+           // if (!game.Validate())
+              //  throw new Exception("Game is invalid.");
 
             //Game names must be unique
             var existing = GetIndex(game.Name);
@@ -107,10 +110,9 @@ namespace GameManager
             return null;
         }
 
-        public Game[] GetAll()
+        //public Game[] GetAll()
+        public IEnumerable<Game> GetAll()
         {
-
-
             //How many games?
             //int count = 0;
             //foreach (var item in _items)
@@ -136,8 +138,10 @@ namespace GameManager
                 throw new ArgumentOutOfRangeException(nameof(id), "Id must be > 0.");
             if (game == null)
                 throw new ArgumentNullException(nameof(game));
-            if (!game.Validate())
-                throw new Exception("Game is invalid.");
+
+            new ObjectValidator().Validate(game);
+            // if (!game.Validate())
+            //    throw new Exception("Game is invalid.");
 
             var index = GetIndex(id);
             if (index < 0)
