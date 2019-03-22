@@ -19,6 +19,7 @@ namespace CharacterCreator.WinForms
             LoadUI();
         }
 
+
         void LoadUI()
         {
             Character character = new Character();
@@ -47,7 +48,11 @@ namespace CharacterCreator.WinForms
             }
         }
 
-
+        /// <summary>
+        /// Opens up the UI to create your fantasy character (Character->New)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnCharacterNew( object sender, EventArgs e )
         {
             //Display UI
@@ -68,22 +73,38 @@ namespace CharacterCreator.WinForms
             BindList();
         }
 
+        /// <summary>
+        /// When somethings wasn't suppose to happen
+        /// </summary>
+        /// <param name="ex"></param>
         private void DisplayError( Exception ex )
         {
             MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        /// <summary>
+        /// Exit the Program (File -> exit)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnFileExit( object sender, EventArgs e )
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Info about the program and it's creator (yours truly)
+        /// (Help -> About)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnHelpAbout( object sender, EventArgs e )
         {
             MessageBox.Show("Help");
             var form = new AboutBox();
             form.ShowDialog();
         }
+
 
         private int GetNextEmptyCharacter()
         {
@@ -96,6 +117,11 @@ namespace CharacterCreator.WinForms
 
         private Character[] _characters = new Character[100];
 
+        /// <summary>
+        /// To make changes a character(s) (Character->Edit)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnCharacterEdit( object sender, EventArgs e )
         {
             var form = new CreateNewCharacterForm();
@@ -110,7 +136,7 @@ namespace CharacterCreator.WinForms
             if (form.ShowDialog(this) != DialogResult.OK)
                 return;
 
-            //TODO: Fix to edit, not add
+       
             UpdateCharacter(character, form.Character);
 
             BindList();
@@ -127,6 +153,11 @@ namespace CharacterCreator.WinForms
             };
         }
 
+        /// <summary>
+        /// Delete a Character (Character->Delete)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnCharacterDelete( object sender, EventArgs e )
         {
             //Get selected game, if any
@@ -139,7 +170,7 @@ namespace CharacterCreator.WinForms
                  MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
                 return;
 
-            //TODO: DELETE
+         
             DeleteCharacter(selected);
             BindList();
         }
@@ -160,18 +191,8 @@ namespace CharacterCreator.WinForms
 
         private Character GetSelectedCharacter()
         {
-            // How to typecast in C#
-
+          
             var value = _ListOfCharacters.SelectedItem;
-
-            //C-style cast - don't do this
-            //var game = (Game)value; // Game = DataType, value = Expression
-
-            //Preferred - null if not valid
-            var character = value as Character;  // Expression as DataType
-
-            //Type check 
-            var character2 = (value is Character) ? (Character)value : null; // Expression is DataType --> bool
 
             return _ListOfCharacters.SelectedItem as Character;
 

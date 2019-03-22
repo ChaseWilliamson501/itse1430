@@ -62,6 +62,7 @@ public string Profession { get; set; }
         /// <summary>
         /// Name of the Agility.
         /// </summary>
+        /// 
         public int Agility { get; set; }
 
         //{
@@ -92,7 +93,7 @@ public string Profession { get; set; }
         //}
         //private int _charisma = "";
 
-
+        // Default Constructor
         public Character()
         {
 
@@ -105,7 +106,7 @@ public string Profession { get; set; }
             Name = name;
         }
 
-
+        // Convert values into string based 
         public override string ToString()
         {
             return Name;
@@ -121,20 +122,20 @@ public string Profession { get; set; }
             if (String.IsNullOrEmpty(Name))
                 return false;
 
-           
+           // The Attributes are required
             if (Strength < 1 || Strength > 100)
                 return false;
 
-            if (Intelligence < 0)
+            if (Intelligence < 1 || Intelligence > 100)
                 return false;
 
-            if (Agility < 0)
+            if (Agility < 1 || Agility > 100)
                 return false;
 
-            if (Constitution < 0)
+            if (Constitution < 1 || Agility > 100)
                 return false;
 
-            if (Charisma < 0)
+            if (Charisma < 1 || Charisma > 100)
                 return false;
 
             return true;
