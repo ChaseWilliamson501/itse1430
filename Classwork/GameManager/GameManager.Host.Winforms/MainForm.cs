@@ -122,8 +122,8 @@ namespace GameManager.Host.Winforms
             };
         }
 
-        //private GameDatabase _games = new GameDatabase();
-        private IGameDatabase _games = new GameDatabase();
+        
+        private IGameDatabase _games = new MemoryGameDatabase();
 
         private void OnGameEdit( object sender, EventArgs e )
         {
