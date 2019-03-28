@@ -17,7 +17,8 @@ namespace GameManager
                 throw new ArgumentNullException(nameof(game));
 
             //Game must be valid
-            new ObjectValidator().Validate(game);
+            //new ObjectValidator().Validate(game);
+            ObjectValidator.Validate(game);
 
             // if (!game.Validate())
             //  throw new Exception("Game is invalid.");
@@ -64,7 +65,8 @@ namespace GameManager
             if (game == null)
                 throw new ArgumentNullException(nameof(game));
 
-            new ObjectValidator().Validate(game);
+            //new ObjectValidator().Validate(game);
+            ObjectValidator.Validate(game);
             // if (!game.Validate())
             //    throw new Exception("Game is invalid.");
 
