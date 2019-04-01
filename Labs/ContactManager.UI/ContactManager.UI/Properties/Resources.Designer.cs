@@ -40,7 +40,8 @@ namespace ContactManager.UI.Properties
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Resources.ResourceManager ResourceManager
         {
-            get {
+            get
+            {
                 if ((resourceMan == null))
                 {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ContactManager.UI.Properties.Resources", typeof(Resources).Assembly);
@@ -57,10 +58,12 @@ namespace ContactManager.UI.Properties
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Globalization.CultureInfo Culture
         {
-            get {
+            get
+            {
                 return resourceCulture;
             }
-            set {
+            set
+            {
                 resourceCulture = value;
             }
         }

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4ACEA8C1-C58B-41D3-8952-A20821A49BA7}</ProjectGuid>
+    <ProjectGuid>{99004565-30E4-449E-9788-21D229BA3509}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ContactManager.Winforms</RootNamespace>
-    <AssemblyName>ContactManager.Winforms</AssemblyName>
+    <RootNamespace>ContactManager.UI</RootNamespace>
+    <AssemblyName>ContactManager.UI</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

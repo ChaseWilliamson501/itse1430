@@ -1,4 +1,4 @@
-﻿namespace ContactManager.Winforms
+﻿namespace ContactManager
 {
     partial class AboutBox
     {
