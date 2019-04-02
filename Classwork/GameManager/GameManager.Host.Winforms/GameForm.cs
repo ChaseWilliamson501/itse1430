@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -30,11 +31,20 @@ namespace GameManager.Host.Winforms
 
 
             // Validate at business level
-            if (!game.Valiate())
+            try
             {
-                MessageBox.Show("Game not valid.", "Error", MessageBoxButtons.OK);
+                //new ObjectValidator().Validate(game);
+                ObjectValidator.Validate(game);
+            } catch (ValidationException)
+            {
+                MessageBox.Show(this, "Game not valid.", "Error", MessageBoxButtons.OK);
                 return;
             };
+            //if (!game.Validate())
+            //{
+            //    MessageBox.Show("Game not valid.", "Error", MessageBoxButtons.OK);
+            //    return;
+            //};
 
             Game = game;
             DialogResult = DialogResult.OK;
@@ -61,7 +71,7 @@ namespace GameManager.Host.Winforms
         private void LoadData( Game game )
         {
             _txtName.Text = game.Name;
-            _txtPublisher.Text = game.Description;
+            _txtPublisher.Text = game.Publisher;
             _txtPrice.Text = game.Price.ToString();
             _cbOwned.Checked = game.Owned;
             _cbCompleted.Checked = game.Completed;
@@ -72,7 +82,7 @@ namespace GameManager.Host.Winforms
         {
             var game = new Game();
             game.Name = _txtName.Text;
-            game.Description = _txtPublisher.Text;
+            game.Publisher = _txtPublisher.Text;
             game.Price = ReadDecimal(_txtPrice);
             game.Owned = _cbOwned.Checked;
             game.Completed = _cbCompleted.Checked;
@@ -111,7 +121,7 @@ namespace GameManager.Host.Winforms
                 _errors.SetError(tb, "Name is required.");
                 e.Cancel = true;
             } else
-                _errors.SetError(tb, " ");
+                _errors.SetError(tb, "");
         }
 
         private void OnValidatePrice( object sender, CancelEventArgs e )
@@ -124,7 +134,7 @@ namespace GameManager.Host.Winforms
                 _errors.SetError(tb, "Price must be >= 0.");
                 e.Cancel = true;
             }else
-            _errors.SetError(tb, " ");
+            _errors.SetError(tb, "");
         }
     }
 

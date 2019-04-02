@@ -16,46 +16,7 @@ namespace GameManager.Host.Winforms
         {
             InitializeComponent();
 
-            LoadUI();
-        }
-
-        void LoadUI()
-        {
-            Game game = new Game();
-
-
-
-            game.Name = "Star Wars FU";
-            game.Price = 59.99M;
-
-            var name = game.Name;
-            if (name.Length == 0)
-                /* is empty */
-
-             //Checking for null - long way
-            if (game.Name != null && game.Name.Length == 0)
-                ;
-
-            //Short way
-            if ((game.Name?.Length ?? 0) == 0)
-                ;
-
-            if (game.Name.Length == 0)
-                /* is empty */
-                ;
-
-
-            var isCool = game.IsCoolGame;
-
-            //Validate(game)
-            game.Valiate();
-
-            //x.ToString();
-            //var str = game.Publisher;
-            //Decimal.TryParse("45.99", out game.Price);
-
-            //_miGameAdd.Click += new EventHandler(OnGameAdd);
-
+            //LoadUI();
         }
 
         private void OnFileExit( object sender, EventArgs e )
@@ -63,68 +24,126 @@ namespace GameManager.Host.Winforms
             //Local variable
             var x = 10;
 
-
             Close();
         }
 
         private void OnHelpAbout( object sender, EventArgs e )
         {
-            MessageBox.Show("Help");
             var form = new AboutBox();
             form.ShowDialog();
         }
 
-        private void BindList ()
+        protected override void OnLoad( EventArgs e )
         {
-            //Bind games to listbox
-            _ListGames.Items.Clear();
+            base.OnLoad(e);
 
-            //nameof(Game.Name) == "Name"
-            _ListGames.DisplayMember = nameof(Game.Name);
+            //Seed if database is empty
+            var games = _games.GetAll();
+            if (games.Count() == 0)
+                //SeedDatabase.Seed(_games);
+                _games.Seed();
 
-            //_ListGames.Items.AddRange(_game)
-            foreach (var game in _games)
-            {
-                if(game != null)
-                _ListGames.Items.Add(game);
-            }
-        }
-
-        private void OnGameAdd( object sender, EventArgs e )
-        {
-            
-            //Display UI
-            var form = new GameForm();
-
-            //Modeless
-            //form.Show();
-
-            //Model
-            if (form.ShowDialog(this) != DialogResult.OK)
-                return;
-
-            //TODO add
-            _games[GetNextEmptyGame()] = form.Game;
             BindList();
         }
 
-        //HACK: Find first spot with no game
-        private int GetNextEmptyGame ()
+        private void BindList()
         {
-            for (var index = 0; index < _games.Length; ++index)
-                if (_games[index] == null)
-                    return index;
+            //Bind games to listbox
+            _ListGames.Items.Clear();
+            _ListGames.DisplayMember = nameof(Game.Name);
 
-            return -1;
+            //Can use AddRange now that we don't care about null items
+            //var enumor = _games.GetAll();
+            //var enumoror = enumor.GetEnumerator();
+            //while (enumoror.MoveNext())
+            //{
+            //    var item = enumoror.Current;
+            //};
+            ////foreach (var item in enumor)
+            //{
+            //};
+
+            //items.ToList().Sort();
+            var items = _games.GetAll();
+            items = items.OrderBy(GetName);
+            
+            _ListGames.Items.AddRange(items.ToArray());
+
+            //foreach (var game in _games)
+            //{
+            //    if (game != null)
+            //        _listGames.Items.Add(game);
+            //};
         }
 
-        private Game[] _games = new Game[100];
+        private string GetName( Game game )
+        {
+            return game.Name;
+        }
+
+
+        private void OnGameAdd( object sender, EventArgs e )
+        {
+            //Display UI
+            var form = new GameForm();
+
+            while (true)
+            {
+                //Modal
+                if (form.ShowDialog(this) != DialogResult.OK)
+                    return;
+
+                //Add
+                try
+                {
+                    //Anything in here that raises an exception will
+                    //be sent to the catch block
+
+                    OnSafeAdd(form);
+                    break;
+                } catch (InvalidOperationException)
+                {
+                    MessageBox.Show(this, "Choose a better game.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } catch (Exception ex)
+                {
+                    //Recover from errors
+                    DisplayError(ex);
+                };
+            };
+
+            BindList();
+        }
+
+        private void DisplayError( Exception ex )
+        {
+            MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void OnSafeAdd( GameForm form )
+        {
+            try
+            {
+                //_games[GetNextEmptyGame()] = form.Game;
+                _games.Add(form.Game);
+            } catch (NotImplementedException e)
+            {
+                //Rewriting an exception
+                throw new Exception("Not implemented yet", e);
+            } catch (Exception e)
+            {
+                //Log a message 
+
+                //Rethrow exception - wrong way
+                //throw e;
+                throw;
+            };
+        }
+
         
-       
+        private IGameDatabase _games = new MemoryGameDatabase();
 
         private void OnGameEdit( object sender, EventArgs e )
         {
-         
             var form = new GameForm();
 
             var game = GetSelectedGame();
@@ -133,25 +152,24 @@ namespace GameManager.Host.Winforms
 
             //Game to edit
             form.Game = game;
-            
-            if (form.ShowDialog(this) != DialogResult.OK)
-                return;
 
-            //TODO: Fix to edit, not add
-            UpdateGame(game, form.Game);
-           
-            BindList();
-        }
-        private void UpdateGame (Game oldGame, Game newGame)
-        {
-            for (var index = 0; index < _games.Length; ++index)
+            while (true)
             {
-                if (_games[index] == oldGame)
+                if (form.ShowDialog(this) != DialogResult.OK)
+                    return;
+
+                try
                 {
-                    _games[index] = newGame;
+                    //UpdateGame(game, form.Game);            
+                    _games.Update(game.Id, form.Game);
                     break;
+                } catch (Exception ex)
+                {
+                    DisplayError(ex);
                 };
             };
+
+            BindList();
         }
 
         private void OnGameDelete( object sender, EventArgs e )
@@ -162,62 +180,133 @@ namespace GameManager.Host.Winforms
                 return;
 
             //Display confirmation
-            if (MessageBox.Show(this, $"Are you sure want to delete {selected.Name}?", "Confirm Delete",
-                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+            if (MessageBox.Show(this, $"Are you sure you want to delete {selected.Name}?",
+                               "Confirm Delete", MessageBoxButtons.YesNo,
+                               MessageBoxIcon.Question) != DialogResult.Yes)
                 return;
 
-            //TODO: DELETE
-            DeleteGame(selected);
+            try
+            {
+                //DeleteGame(selected);
+                _games.Delete(selected.Id);
+            } catch (Exception ex)
+            {
+                DisplayError(ex);
+            };
             BindList();
         }
 
-        private void DeleteGame (Game game)
+        private Game GetSelectedGame()
         {
-            for (var index = 0; index < _games.Length; ++index)
-            {
-                
-                
-                    if(_games[index]==game)
-                    {
-                        _games[index] = null;
-                    }
-                
-            }
-        }
-
-        private Game GetSelectedGame ()
-        {
-            // How to typecast in C#
-
             var value = _ListGames.SelectedItem;
 
+            //_ListGames.Items.OfType<Game>(); //as
+            //_ListGames.Items.Cast<Game>(); //(T)
+
             //C-style cast - don't do this
-            //var game = (Game)value; // Game = DataType, value = Expression
+            //var game = (Game)value;
 
             //Preferred - null if not valid
-            var game = value as Game;  // Expression as DataType
+            var game = value as Game;
 
-            //Type check 
-            var game2 = (value is Game) ? (Game)value : null; // Expression is DataType --> bool
+            //Type check
+            var game2 = (value is Game) ? (Game)value : null;
 
             return _ListGames.SelectedItem as Game;
-            
         }
 
         private void OnGameSelected( object sender, EventArgs e )
         {
-
         }
 
         protected override void OnFormClosing( FormClosingEventArgs e )
         {
-            
-            if(MessageBox.Show(this, "Are you sure?", "Close", MessageBoxButtons.YesNo) == DialogResult.No)
+            if (MessageBox.Show(this, "Are you sure?", "Close", MessageBoxButtons.YesNo) == DialogResult.No)
             {
                 e.Cancel = true;
                 return;
             };
             base.OnFormClosing(e);
         }
+        #region Unused Code (Demo only)
+
+        //void LoadUI ()
+        //{
+        //    Game game = new Game();
+
+        //    game.Name = "DOOM";
+        //    game.Price = 59.99M;
+
+        //    var name = game.Name;
+        //    if (name.Length == 0)
+        //        /* is empty*/;
+
+        //    //Checking for null - long way
+        //    if (game.Name != null && game.Name.Length == 0)
+        //        ;
+
+        //    //Conditional - E ? Et : Ef
+        //    var length = game.Name != null ? game.Name.Length : 0;
+
+        //    //Short way - null conditional
+        //    // game.Name.Length -> int
+        //    // game.Name?.Length -> int?
+        //    if ((game.Name?.Length ?? 0) == 0)
+        //        ;
+        //    if (game.Name.Length == 0)
+        //        /* is empty */
+        //        ;
+
+        //    //var isCool = game.IsCoolGame;
+        //    //game.IsCoolGame = false;
+
+        //    //Validate(game)
+        //    game.Validate();
+
+        //    //var x = 10;
+        //    //x.ToString();
+
+        //    //var str = game.Publisher;            
+        //    //Decimal.TryParse("45.99", out game.Price);
+
+        //    //event EventHandler Click;
+        //    //delegate EventHandler void ( Object, EventArgs )
+        //    //_miGameAdd.Click += OnGameAdd;
+        //}
+
+        ////HACK: Find first spot in array with no game
+        //private int GetNextEmptyGame ()
+        //{
+        //    for (var index = 0; index < _games.Length; ++index)
+        //        if (_games[index] == null)
+        //            return index;
+
+        //    return -1;
+        //}
+
+        //private void UpdateGame ( Game oldGame, Game newGame )
+        //{
+        //    for (int index = 0; index < _games.Length; ++index)
+        //    {
+        //        if (_games[index] == oldGame)
+        //        {
+        //            _games[index] = newGame;
+        //            break;
+        //        };
+        //    };
+        //}
+
+        //private void DeleteGame ( Game game )
+        //{
+        //    for (var index = 0; index < _games.Length; ++index)
+        //    {
+        //        if (_games[index] == game)
+        //        {
+        //            _games[index] = null;
+        //            break;
+        //        };
+        //    };
+        //}
+        #endregion
     }
 }
