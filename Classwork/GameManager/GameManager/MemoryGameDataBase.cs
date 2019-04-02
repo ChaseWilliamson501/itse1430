@@ -43,8 +43,11 @@ namespace GameManager
         protected override IEnumerable<Game> GetAllCore()
         {
             //Use iterator
-            foreach (var item in _items)
-                yield return Clone(item);
+            //foreach (var item in _items)
+            //    yield return Clone(item);
+            //return _items;
+
+            return _items.Select(Clone);
         }
 
         protected override Game UpdateCore( int id, Game game )
@@ -70,7 +73,7 @@ namespace GameManager
         {
             target.Id = source.Id;
             target.Name = source.Name;
-            target.Publisher = source.Publisher;
+            target.Description = source.Description;
             target.Price = source.Price;
             target.Owned = source.Owned;
             target.Completed = source.Completed;
@@ -78,15 +81,42 @@ namespace GameManager
 
         private int GetIndex( int id )
         {
-            for (var index = 0; index < _items.Count; ++index)
-                if (_items[index]?.Id == id)
-                    return index;
+            //var tempType = new IsIdType() { Id = id };
+            //Can use lambda anywhere you need a function object, must be explicit on type
+            //Func<Game, bool> isId = (g) => g.Id == id;
+
+            //_items = all games
+            // .Where = filters down to only those matching IsId
+            // .FirstOrDefault = returns first of filtered items, if any
+            var game = _items.Where((g) => g.Id == id).FirstOrDefault();
+
+            //Demoing anonymous type
+            //var games = from g in _items
+            //            where g.Id == id
+            //            select new { Id = g.Id, Name = g.Name };
+            //var game = games.FirstOrDefault();
+            if (game != null)
+                return _items.IndexOf(game);
+
+            //Forget this
+            //for (var index = 0; index < _items.Count; ++index)
+            //    if (_items[index]?.Id == id)
+            //        return index;
 
             return -1;
         }
 
-        
+        //Helper type to capture data needed by function
+        //private sealed class IsIdType
 
+        //{
+        //    public int Id { get; set; }
+
+        //    public bool IsId( Game game )
+        //    {
+        //        return game.Id == Id;
+        //    }
+        //}
         //Arrays are so 90s
         //private readonly Game[] _items = new Game[100];
 
