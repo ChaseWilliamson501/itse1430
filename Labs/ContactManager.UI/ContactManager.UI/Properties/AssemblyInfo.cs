@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ContactManager")]
+[assembly: AssemblyTitle("ContactManager.UI")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Chase Williamson")]
-[assembly: AssemblyProduct("ContactManager")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ContactManager.UI")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("99004565-30e4-449e-9788-21d229ba3509")]
+[assembly: Guid("d5e89152-dded-4583-a9f4-715fe712246d")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{99004565-30E4-449E-9788-21D229BA3509}</ProjectGuid>
+    <ProjectGuid>{D5E89152-DDED-4583-A9F4-715FE712246D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>ContactManager.UI</RootNamespace>
     <AssemblyName>ContactManager.UI</AssemblyName>
@@ -46,12 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AboutBox.Designer.cs">
-      <DependentUpon>AboutBox.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,12 +54,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AboutBox.resx">
-      <DependentUpon>AboutBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -90,7 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ContactManager\ContactManager.csproj">
-      <Project>{a618dd22-cdb0-4d27-b894-4a595678afe4}</Project>
+      <Project>{303773e4-6b85-4702-b81c-7404b27836b5}</Project>
       <Name>ContactManager</Name>
     </ProjectReference>
   </ItemGroup>
