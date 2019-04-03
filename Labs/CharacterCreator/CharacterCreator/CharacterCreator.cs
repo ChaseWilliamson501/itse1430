@@ -97,6 +97,7 @@ public string Profession { get; set; }
         public Character()
         {
 
+
         }
 
 
