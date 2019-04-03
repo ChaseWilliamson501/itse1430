@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CharacterCreator.WinForms.Properties
+namespace ContactManager.UI.Properties
 {
 
 
@@ -21,7 +21,8 @@ namespace CharacterCreator.WinForms.Properties
 
         public static Settings Default
         {
-            get {
+            get
+            {
                 return defaultInstance;
             }
         }

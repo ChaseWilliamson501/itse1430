@@ -37,6 +37,12 @@ namespace GameManager.Host.Winforms
         {
             base.OnLoad(e);
 
+            //Seed if database is empty
+            var games = _games.GetAll();
+            if (games.Count() == 0)
+                //SeedDatabase.Seed(_games);
+                _games.Seed();
+
             BindList();
         }
 
@@ -47,13 +53,34 @@ namespace GameManager.Host.Winforms
             _ListGames.DisplayMember = nameof(Game.Name);
 
             //Can use AddRange now that we don't care about null items
-            _ListGames.Items.AddRange(_games.GetAll());
+            //var enumor = _games.GetAll();
+            //var enumoror = enumor.GetEnumerator();
+            //while (enumoror.MoveNext())
+            //{
+            //    var item = enumoror.Current;
+            //};
+            ////foreach (var item in enumor)
+            //{
+            //};
+
+            //items.ToList().Sort();
+            var items = _games.GetAll();
+            items = items.OrderBy(GetName);
+            
+            _ListGames.Items.AddRange(items.ToArray());
+
             //foreach (var game in _games)
             //{
             //    if (game != null)
             //        _listGames.Items.Add(game);
             //};
         }
+
+        private string GetName( Game game )
+        {
+            return game.Name;
+        }
+
 
         private void OnGameAdd( object sender, EventArgs e )
         {
@@ -112,7 +139,8 @@ namespace GameManager.Host.Winforms
             };
         }
 
-        private GameDatabase _games = new GameDatabase();
+        
+        private IGameDatabase _games = new MemoryGameDatabase();
 
         private void OnGameEdit( object sender, EventArgs e )
         {
@@ -171,6 +199,9 @@ namespace GameManager.Host.Winforms
         private Game GetSelectedGame()
         {
             var value = _ListGames.SelectedItem;
+
+            //_ListGames.Items.OfType<Game>(); //as
+            //_ListGames.Items.Cast<Game>(); //(T)
 
             //C-style cast - don't do this
             //var game = (Game)value;

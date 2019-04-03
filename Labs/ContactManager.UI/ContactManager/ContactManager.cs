@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameManager
+namespace ContactManager
 {
-
-    public abstract class GameDatabase : IGameDatabase
+    public abstract class Contact
     {
+        public string Name { get; set; }
+        public string Email { get; set; }
+
+
 
         public Game Add( Game game )
         {
@@ -88,32 +91,42 @@ namespace GameManager
 
         protected virtual Game FindByName( string name )
         {
-            //LINQ
-            //select
-            //from
-            //where
-            //=> IEnumerable<T>
-            return (from game in GetAllCore()
-                    where String.Compare(game.Name, name, true) == 0
-                    //orderby game.Name, game.Id descending
-                    select game).FirstOrDefault();
+            foreach (var game in GetAllCore())
+            {
+                if (String.Compare(game.Name, name, true) == 0)
+                    return game;
+            };
 
-            //Extension method equivalent
-            //foreach (var game in GetAllCore())
-            //{
-            //    if (String.Compare(game.Name, name, true) == 0)
-            //        return game;
-            //};
 
-            //return null;
+            return null;
         }
 
         protected abstract Game GetCore( int id );
 
         protected abstract IEnumerable<Game> GetAllCore();
 
-        protected abstract Game UpdateCore(int id, Game newGame );
+        protected abstract Game UpdateCore( int id, Game newGame );
 
     }
+
+    public abstract class Message
+    {
+        public string Contact { get; set; }
+        public string Subject { get; set; }
+
+        public string Body { get; set; }
+    }
 }
+bool IsValidEmail( string source )
+{
+    try
+    {
+        new System.Net.Mail.MailAddress(source);
+        return true;
+    } catch
+    { };
+
+    return false;
+}
+
 

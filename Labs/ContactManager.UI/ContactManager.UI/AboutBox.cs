@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CharacterCreator.WinForms
+namespace ContactManager.UI
 {
     partial class AboutBox : Form
     {

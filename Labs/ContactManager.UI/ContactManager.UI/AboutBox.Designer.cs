@@ -1,4 +1,4 @@
-﻿namespace CharacterCreator.WinForms
+﻿namespace ContactManager.UI
 {
     partial class AboutBox
     {
