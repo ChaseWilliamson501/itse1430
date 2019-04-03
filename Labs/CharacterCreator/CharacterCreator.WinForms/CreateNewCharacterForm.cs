@@ -19,6 +19,11 @@ namespace CharacterCreator.WinForms
 
         public Character Character { get; set; }
 
+        /// <summary>
+        /// Click the save button to process character data
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnSave( object sender, EventArgs e )
         {
             if (!ValidateChildren())
@@ -39,13 +44,22 @@ namespace CharacterCreator.WinForms
             Close();
         }
 
+        /// <summary>
+        /// // Gotta have a name, any name will do. Will take silly name like uhm.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnCancel( object sender, EventArgs e )
         {
             DialogResult = DialogResult.Cancel;
             Close();
         }
 
-
+        /// <summary>
+        /// // Gotta have a name, any name will do. Will take silly name like uhm.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <returns></returns>
         private int ReadInt( TextBox control )
         {
             if (control.Text.Length == 0)
@@ -57,6 +71,10 @@ namespace CharacterCreator.WinForms
             return -1;
         }
 
+        /// <summary>
+        /// Load the character's data 
+        /// </summary>
+        /// <param name="character"></param>
         private void LoadData( Character character )
         {
             _txtName.Text = character.Name;
@@ -69,8 +87,11 @@ namespace CharacterCreator.WinForms
             _txtCharisma.Text = character.Charisma.ToString();
 
         }
-        //Saves UI into new game
 
+        /// <summary>
+        /// //Saves user input into new character
+        /// </summary>
+        /// <returns></returns>
         private Character SaveData()
         {
             var character = new Character();
@@ -85,19 +106,17 @@ namespace CharacterCreator.WinForms
 
 
 
-            //Demoing ctor
+            
             var character2 = new Character(_txtName.Text, ReadInt(_txtStrength), ReadInt(_txtIntelligence), ReadInt(_txtAgility), ReadInt(_txtConstitution), ReadInt(_txtCharisma));
             return character;
         }
 
-        //Defined in types
-        //Derived types may override and change it
-        protected virtual void CanbeChanged() { }
-
-        //Override a virtual member in Form
+        
+        
         protected override void OnLoad( EventArgs e )
         {
-            //this.OnLoad(e);
+            
+            // Centers the UI when initialized
             base.OnLoad(e);
 
             //Init UI if editing a game
@@ -109,7 +128,11 @@ namespace CharacterCreator.WinForms
             ValidateChildren();
         }
 
-
+        /// <summary>
+        /// // Gotta have a name, any name will do. Will take silly name like uhm.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnValidateName( object sender, CancelEventArgs e )
         {
             var tb = sender as TextBox;
@@ -123,20 +146,25 @@ namespace CharacterCreator.WinForms
         }
 
 
+        /// <summary>
+        ///  // Making sure the attributes are between 1 or 100
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnValidateAttributes( object sender, CancelEventArgs e )
         {
             var tb = sender as TextBox;
 
             var attributes = ReadInt(tb);
-            if (attributes < 50)
+            if (attributes < 1 || attributes > 100)
             {
-                _errors.SetError(tb, "The attribute must be >= 50.");
+                _errors.SetError(tb, "The attribute must be between 1 or 100.");
                 e.Cancel = true;
             } else
                 _errors.SetError(tb, "");
         }
 
-        
+
     }
 
 }

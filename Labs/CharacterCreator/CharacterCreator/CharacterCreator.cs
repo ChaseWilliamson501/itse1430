@@ -19,13 +19,16 @@ namespace CharacterCreator
 
 /// <summary>Profession of the Character.</summary>
 public string Profession { get; set; }
-    //    {
-    //        get { return _Profession ?? ""; }
-    //        set { _Profession = value; }
-    //    }
-    //    private string _Profession = "";
+        //    {
+        //        get { return _Profession ?? ""; }
+        //        set { _Profession = value; }
+        //    }
+        //    private string _Profession = "";
 
-public string Race { get; set; }
+        /// <summary>
+        /// Name of the Race.
+        /// </summary>
+        public string Race { get; set; }
 
         //{
         //    get { return _race ?? ""; }
@@ -33,15 +36,21 @@ public string Race { get; set; }
         //}
         //private string _race = "";
 
-
+        /// <summary>
+        /// Name of the Strength.
+        /// </summary>
         public int Strength { get; set; }
-         
+
         //{
         //    get { return _strength; }
         //    set { _strength = value; }
         //}
         //private decimal _strength = "";
 
+
+        /// <summary>
+        /// Name of the Intelligence.
+        /// </summary>
         public int Intelligence { get; set; }
 
         //{
@@ -50,6 +59,10 @@ public string Race { get; set; }
         //}
         //private decimal _intelligence = "";
 
+        /// <summary>
+        /// Name of the Agility.
+        /// </summary>
+        /// 
         public int Agility { get; set; }
 
         //{
@@ -58,6 +71,9 @@ public string Race { get; set; }
         //}
         //private int _agility = "";
 
+        /// <summary>
+        /// Name of the Constitution.
+        /// </summary>
         public int Constitution { get; set; }
 
         //{
@@ -66,6 +82,9 @@ public string Race { get; set; }
         //}
         //private decimal _constitution = "";
 
+        /// <summary>
+        /// Name of the Charisma.
+        /// </summary>
         public int Charisma { get; set; }
 
         //{
@@ -74,9 +93,10 @@ public string Race { get; set; }
         //}
         //private int _charisma = "";
 
-
+        // Default Constructor
         public Character()
         {
+
 
         }
 
@@ -87,7 +107,7 @@ public string Race { get; set; }
             Name = name;
         }
 
-
+        // Convert values into string based 
         public override string ToString()
         {
             return Name;
@@ -98,27 +118,25 @@ public string Race { get; set; }
         /// <returns></returns>
         public bool Validate(/* Game this */)
         {
-            //Redundant dude
-            var str = this.Name;
 
             // Name is required
             if (String.IsNullOrEmpty(Name))
                 return false;
 
-           
-            if (Strength < 0)
+           // The Attributes are required
+            if (Strength < 1 || Strength > 100)
                 return false;
 
-            if (Intelligence < 0)
+            if (Intelligence < 1 || Intelligence > 100)
                 return false;
 
-            if (Agility < 0)
+            if (Agility < 1 || Agility > 100)
                 return false;
 
-            if (Constitution < 0)
+            if (Constitution < 1 || Agility > 100)
                 return false;
 
-            if (Charisma < 0)
+            if (Charisma < 1 || Charisma > 100)
                 return false;
 
             return true;
