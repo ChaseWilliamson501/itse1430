@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace ContactManager
 {
-    public abstract class Contact
+    class ContactDatabase
     {
-        public string Name { get; set; }
-        public string Email { get; set; }
-
-
         public Game Add( Game game )
         {
             //Validate input
@@ -105,26 +101,5 @@ namespace ContactManager
 
         protected abstract Game UpdateCore( int id, Game newGame );
 
-
-
-
-        bool IsValidEmail( string source )
-        {
-            try
-            {
-                new System.Net.Mail.MailAddress(source);
-                return true;
-            } catch
-            { };
-
-            return false;
-        }
-
     }
-}
-public abstract class Message
-{
-    public string Contact { get; set; }
-    public string Subject  { get; set; }
-    public string Body { get; set; }
 }
