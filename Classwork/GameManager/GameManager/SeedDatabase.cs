@@ -12,9 +12,9 @@ namespace GameManager
             //Collection initializer
             var games = new[]
                 {
-                    new Game() { Name = "DOOM",  Publisher = "Space Marine", Price = 49.99M },
-                    new Game() { Name = "Oblivion", Publisher = "Medieval", Price = 89.99M },
-                    new Game() { Name = "Fallout 76", Publisher = "Failed MMO", Price = 0.01M }
+                    new Game() { Name = "DOOM",  Description = "Space Marine", Price = 49.99M },
+                    new Game() { Name = "Oblivion", Description = "Medieval", Price = 89.99M },
+                    new Game() { Name = "Fallout 76", Description = "Failed MMO", Price = 0.01M }
                 };
 
             foreach (var game in games)

@@ -99,6 +99,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GameManager.FileSystem\GameManager.FileSystem.csproj">
+      <Project>{3a0410a4-be96-4a6a-8db0-ebe191d49dcc}</Project>
+      <Name>GameManager.FileSystem</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GameManager\GameManager.csproj">
       <Project>{2cdeb27a-ef9a-4240-9d0b-64a87259e8ec}</Project>
       <Name>GameManager</Name>
