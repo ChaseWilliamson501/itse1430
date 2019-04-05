@@ -143,12 +143,67 @@ namespace ContactManager.UI
         /// </summary>
         /// <returns></returns>
 
-        private void OnContactSend( object sender, EventArgs e )
+        private void OnContactsSend( object sender, EventArgs e )
         {
 
         }
 
-        private Contact GetSelectedGame()
+        private void OnContactsEdit( object sender, EventArgs e )
+        {
+            var form = new CreateNewContacts();
+
+            var contact = GetSelectedContacts();
+            if (contact == null)
+                return;
+
+            //Game to edit
+            form.Contact = contact;
+
+            while (true)
+            {
+                if (form.ShowDialog(this) != DialogResult.OK)
+                    return;
+
+                try
+                {
+                    //UpdateGame(game, form.Game);            
+                    _contacts.Update(contact.Id, form.Contact);
+                    break;
+                } catch (Exception ex)
+                {
+                    DisplayError(ex);
+                };
+            };
+
+            BindList();
+        }
+
+        private void OnContactsDelete( object sender, EventArgs e )
+        {
+            // Get selected game, if any
+            var selected = GetSelectedContacts();
+            if (selected == null)
+                return;
+
+            //Display confirmation
+            if (MessageBox.Show(this, $"Are you sure you want to delete {selected.Name}?",
+                               "Confirm Delete", MessageBoxButtons.YesNo,
+                               MessageBoxIcon.Question) != DialogResult.Yes)
+                return;
+
+            try
+            {
+                //DeleteGame(selected);
+                _contacts.Remove(selected.Id);
+            } catch (Exception ex)
+            {
+                DisplayError(ex);
+            };
+            BindList();
+        }
+    
+
+        private Contact GetSelectedContacts()
         {
             var value = _ListContacts.SelectedItem;
 
