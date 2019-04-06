@@ -35,7 +35,7 @@ namespace ContactManager.UI
                 ObjectValidator.Validate(contact);
             } catch (ValidationException)
             {
-                MessageBox.Show(this, "Game not valid.", "Error", MessageBoxButtons.OK);
+                MessageBox.Show(this, "Contact information not valid.", "Error", MessageBoxButtons.OK);
                 return;
             };
             //if (!game.Validate())
@@ -70,7 +70,7 @@ namespace ContactManager.UI
             contact.Email = _txtEmail.Text;
             
             //Demoing ctor
-            var contact2 = new Contact(_txtName.Text, _txtEmail));
+            var contact2 = new Contact(_txtName.Text, (_txtEmail));
             return contact;
         }
 
@@ -105,6 +105,20 @@ namespace ContactManager.UI
             } else
                 _errors.SetError(tb, "");
         }
+
+        private void OnValidateEmail( object sender, CancelEventArgs e )
+        {
+            var tb = sender as TextBox;
+
+            if (tb.Text.Length == 0)
+            {
+                _errors.SetError(tb, "Email is required.");
+                e.Cancel = true;
+            } else
+                _errors.SetError(tb, "");
+        }
+
+
 
         bool IsValidEmail( string source )
         {

@@ -138,10 +138,6 @@ namespace ContactManager.UI
         }
 
 
-        /// <summary>
-        /// OnContactEdit and OnContactDelete
-        /// </summary>
-        /// <returns></returns>
 
         private void OnContactsSend( object sender, EventArgs e )
         {
@@ -207,13 +203,8 @@ namespace ContactManager.UI
         {
             var value = _ListContacts.SelectedItem;
 
-            //C-style cast - don't do this
-            //var game = (Game)value;
-
-            //Preferred - null if not valid
             var game = value as Contact;
 
-            //Type check
             var game2 = (value is Contact) ? (Contact)value : null;
 
             return _ListContacts.SelectedItem as Contact;
