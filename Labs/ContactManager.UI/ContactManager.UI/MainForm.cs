@@ -29,18 +29,7 @@ namespace ContactManager.UI
             form.ShowDialog();
         }
 
-        protected override void OnLoad( EventArgs e )
-        {
-            base.OnLoad(e);
-
-            //Seed if database is empty
-            var games = _contacts.GetAll();
-            if (games.Count() == 0)
-                //SeedDatabase.Seed(_games);
-                _contacts.Seed();
-
-            BindList();
-        }
+      
 
         private void BindList()
         {
@@ -220,7 +209,5 @@ namespace ContactManager.UI
             };
             base.OnFormClosing(e);
         }
-
-        
     }
 }

@@ -14,14 +14,7 @@ namespace ContactManager
 
         public int Id { get; set; }
 
-    public class Message
-    {
-
-        public string Contact { get; set; }
-        public string Subject { get; set; }
-        public string Body { get; set; }
-
-    }
+    
 
     public IEnumerable<ValidationResult> Validate( ValidationContext validationContext )
     {
