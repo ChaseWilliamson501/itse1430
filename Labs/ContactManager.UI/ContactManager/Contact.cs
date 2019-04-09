@@ -14,7 +14,17 @@ namespace ContactManager
 
         public int Id { get; set; }
 
-    
+        public Contact()
+        {
+
+        }
+
+        public Contact( string name, string email ) 
+        {
+            Name = name;
+            Email = email;
+
+        }
 
     public IEnumerable<ValidationResult> Validate( ValidationContext validationContext )
     {
@@ -24,8 +34,9 @@ namespace ContactManager
         if (String.IsNullOrEmpty(Name))
             items.Add(new ValidationResult("Name is required.", new[] { nameof(Name) }));
 
+        // Email is requird
         if (String.IsNullOrEmpty(Email))
-             items.Add(new ValidationResult("Name is required.", new[] { nameof(Email) }));
+             items.Add(new ValidationResult("Email is required.", new[] { nameof(Email) }));
 
 
 

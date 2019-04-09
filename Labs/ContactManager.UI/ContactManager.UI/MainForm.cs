@@ -29,8 +29,14 @@ namespace ContactManager.UI
             form.ShowDialog();
         }
 
-      
 
+        protected override void OnLoad( EventArgs e )
+        {
+            base.OnLoad(e);
+              
+
+            BindList();
+        }
         private void BindList()
         {
             //Bind games to listbox
@@ -120,10 +126,13 @@ namespace ContactManager.UI
             return _ListContacts.SelectedItem as Contact;
         }
 
+        
 
 
         private void OnContactsSend( object sender, EventArgs e )
         {
+            _MessageBox.Text += Console.WriteLine($"? {completed}");
+            _MessageBox.Text += Console.WriteLine($"? {completed}");
             _MessageBox.Text += Console.WriteLine($"? {completed}");
         }
 
@@ -135,7 +144,7 @@ namespace ContactManager.UI
             if (contact == null)
                 return;
 
-            //Game to edit
+            //Contact to edit
             form.Contact = contact;
 
             while (true)
@@ -159,7 +168,7 @@ namespace ContactManager.UI
 
         private void OnContactsDelete( object sender, EventArgs e )
         {
-            // Get selected game, if any
+            // Get selected Contact, if any
             var selected = GetSelectedContacts();
             if (selected == null)
                 return;
@@ -172,7 +181,7 @@ namespace ContactManager.UI
 
             try
             {
-                //DeleteGame(selected);
+                
                 _contacts.Remove(selected.Id);
             } catch (Exception ex)
             {

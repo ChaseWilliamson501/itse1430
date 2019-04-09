@@ -41,11 +41,12 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this._ListContacts = new System.Windows.Forms.ListBox();
+            this._MessageBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this._MessageBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -156,6 +157,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this._MessageBox);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
@@ -173,10 +175,19 @@
             this._ListContacts.Size = new System.Drawing.Size(260, 420);
             this._ListContacts.TabIndex = 0;
             // 
+            // _MessageBox
+            // 
+            this._MessageBox.Location = new System.Drawing.Point(72, 81);
+            this._MessageBox.Multiline = true;
+            this._MessageBox.Name = "_MessageBox";
+            this._MessageBox.ReadOnly = true;
+            this._MessageBox.Size = new System.Drawing.Size(374, 218);
+            this._MessageBox.TabIndex = 5;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 39);
+            this.label2.Location = new System.Drawing.Point(16, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 4;
@@ -185,7 +196,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 6);
+            this.label1.Location = new System.Drawing.Point(16, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 3;
@@ -193,26 +204,26 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(107, 39);
+            this.textBox2.Location = new System.Drawing.Point(72, 36);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(420, 20);
+            this.textBox2.Size = new System.Drawing.Size(374, 20);
             this.textBox2.TabIndex = 1;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(107, 3);
+            this.textBox1.Location = new System.Drawing.Point(72, 3);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(423, 20);
+            this.textBox1.Size = new System.Drawing.Size(374, 20);
             this.textBox1.TabIndex = 0;
             // 
-            // _MessageBox
+            // label3
             // 
-            this._MessageBox.Location = new System.Drawing.Point(127, 104);
-            this._MessageBox.Multiline = true;
-            this._MessageBox.Name = "_MessageBox";
-            this._MessageBox.ReadOnly = true;
-            this._MessageBox.Size = new System.Drawing.Size(374, 218);
-            this._MessageBox.TabIndex = 5;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 81);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Message";
             // 
             // MainForm
             // 
@@ -256,6 +267,7 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox _MessageBox;
+        private System.Windows.Forms.Label label3;
     }
 }
 

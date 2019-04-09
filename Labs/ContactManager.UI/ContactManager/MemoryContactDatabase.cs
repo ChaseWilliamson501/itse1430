@@ -55,7 +55,7 @@ namespace ContactManager
             return game;
         }
 
-        private Contact Clone( Contact game )
+        private Contact Clone( Contact contact )
         {
             var newContact = new Contact();
             Clone(newContact, contact);
@@ -81,15 +81,8 @@ namespace ContactManager
         }
 
 
-
-        //Arrays are so 90s
-        //private readonly Game[] _items = new Game[100];
-
-        //ArrayLists are so 00s
-        //private readonly ArrayList _items = new ArrayList();
-
         private readonly List<Contact> _items = new List<Contact>();
-        //private readonly Collection<Game> _items = new Collection<Game>();
+        
 
         private int _nextId = 0;
     }

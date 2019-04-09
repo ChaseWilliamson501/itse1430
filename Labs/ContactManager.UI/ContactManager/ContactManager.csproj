@@ -47,7 +47,6 @@
     <Compile Include="IContactDatabase.cs" />
     <Compile Include="MemoryContactDatabase.cs" />
     <Compile Include="Message.cs" />
-    <Compile Include="MessageService.cs" />
     <Compile Include="ObjectValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

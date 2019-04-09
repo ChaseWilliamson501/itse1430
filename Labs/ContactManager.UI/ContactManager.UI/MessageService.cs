@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ContactManager.UI
 {
-    public abstract class MessageService
+   public abstract class MessageService
     {
 
     }

@@ -14,17 +14,13 @@ namespace ContactManager
             if (contact == null)
                 throw new ArgumentNullException(nameof(contact));
 
-            //Game must be valid
-            //new ObjectValidator().Validate(game);
+            
             ObjectValidator.Validate(contact);
-
-            // if (!game.Validate())
-            //  throw new Exception("Game is invalid.");
 
             //Game names must be unique
             var existing = FindByName(contact.Name);
             if (existing != null)
-                throw new Exception("Game must be unique.");
+                throw new Exception("Contact must be unique.");
 
             return AddCore(contact);
 
@@ -70,12 +66,12 @@ namespace ContactManager
 
             var existing = GetCore(id);
             if (existing != null)
-                throw new Exception("Game does not exist.");
+                throw new Exception("Contact info does not exist.");
 
             //Game names must be unique            
             var sameName = FindByName(contact.Name);
             if (sameName != null && sameName.Id != id)
-                throw new Exception("Game must be unique.");
+                throw new Exception("Contact info must be unique.");
 
             return UpdateCore(id, contact);
         }

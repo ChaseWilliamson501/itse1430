@@ -51,7 +51,7 @@ namespace ContactManager.UI
             Close();
         }
 
-        private void LoadData( Contact Contact )
+        private void LoadData( Contact contact )
         {
             _txtName.Text = contact.Name;
             _txtEmail.Text = contact.Email;
@@ -66,7 +66,7 @@ namespace ContactManager.UI
             contact.Email = _txtEmail.Text;
             
             //Demoing ctor
-            var contact2 = new Contact(_txtName.Text, (_txtEmail));
+            var contact2 = new Contact(_txtName.Text, _txtEmail.Text);
             return contact;
         }
 
