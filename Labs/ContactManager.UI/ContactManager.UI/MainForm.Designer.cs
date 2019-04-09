@@ -41,11 +41,11 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this._ListContacts = new System.Windows.Forms.ListBox();
-            this._MessageBox = new System.Windows.Forms.TextBox();
+            this._txtMessageBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this._txtSubjectBox = new System.Windows.Forms.TextBox();
+            this._txtContactBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -158,11 +158,11 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.label3);
-            this.splitContainer1.Panel2.Controls.Add(this._MessageBox);
+            this.splitContainer1.Panel2.Controls.Add(this._txtMessageBox);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Panel2.Controls.Add(this.textBox2);
-            this.splitContainer1.Panel2.Controls.Add(this.textBox1);
+            this.splitContainer1.Panel2.Controls.Add(this._txtSubjectBox);
+            this.splitContainer1.Panel2.Controls.Add(this._txtContactBox);
             this.splitContainer1.Size = new System.Drawing.Size(800, 426);
             this.splitContainer1.SplitterDistance = 266;
             this.splitContainer1.TabIndex = 1;
@@ -175,14 +175,14 @@
             this._ListContacts.Size = new System.Drawing.Size(260, 420);
             this._ListContacts.TabIndex = 0;
             // 
-            // _MessageBox
+            // _txtMessageBox
             // 
-            this._MessageBox.Location = new System.Drawing.Point(72, 81);
-            this._MessageBox.Multiline = true;
-            this._MessageBox.Name = "_MessageBox";
-            this._MessageBox.ReadOnly = true;
-            this._MessageBox.Size = new System.Drawing.Size(374, 218);
-            this._MessageBox.TabIndex = 5;
+            this._txtMessageBox.Location = new System.Drawing.Point(72, 81);
+            this._txtMessageBox.Multiline = true;
+            this._txtMessageBox.Name = "_txtMessageBox";
+            this._txtMessageBox.ReadOnly = true;
+            this._txtMessageBox.Size = new System.Drawing.Size(374, 218);
+            this._txtMessageBox.TabIndex = 5;
             // 
             // label2
             // 
@@ -202,19 +202,19 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Name";
             // 
-            // textBox2
+            // _txtSubjectBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(72, 36);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(374, 20);
-            this.textBox2.TabIndex = 1;
+            this._txtSubjectBox.Location = new System.Drawing.Point(72, 36);
+            this._txtSubjectBox.Name = "_txtSubjectBox";
+            this._txtSubjectBox.Size = new System.Drawing.Size(374, 20);
+            this._txtSubjectBox.TabIndex = 1;
             // 
-            // textBox1
+            // _txtContactBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(72, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(374, 20);
-            this.textBox1.TabIndex = 0;
+            this._txtContactBox.Location = new System.Drawing.Point(72, 3);
+            this._txtContactBox.Name = "_txtContactBox";
+            this._txtContactBox.Size = new System.Drawing.Size(374, 20);
+            this._txtContactBox.TabIndex = 0;
             // 
             // label3
             // 
@@ -264,9 +264,9 @@
         private System.Windows.Forms.ListBox _ListContacts;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox _MessageBox;
+        private System.Windows.Forms.TextBox _txtSubjectBox;
+        private System.Windows.Forms.TextBox _txtContactBox;
+        private System.Windows.Forms.TextBox _txtMessageBox;
         private System.Windows.Forms.Label label3;
     }
 }

@@ -69,14 +69,13 @@ namespace ContactManager.UI
                 //Add
                 try
                 {
-                    //Anything in here that raises an exception will
-                    //be sent to the catch block
+                    
 
                     OnSafeAdd(form);
                     break;
                 } catch (InvalidOperationException)
                 {
-                    MessageBox.Show(this, "Choose a better game.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, "invalid contact.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } catch (Exception ex)
                 {
                     //Recover from errors
@@ -131,9 +130,9 @@ namespace ContactManager.UI
 
         private void OnContactsSend( object sender, EventArgs e )
         {
-            _MessageBox.Text += Console.WriteLine($"? {completed}");
-            _MessageBox.Text += Console.WriteLine($"? {completed}");
-            _MessageBox.Text += Console.WriteLine($"? {completed}");
+            _txtMessageBox.Text += Console.WriteLine($"? {completed}");
+            _txtMessageBox.Text += Console.WriteLine($"? {completed}");
+            _txtMessageBox.Text += Console.WriteLine($"? {completed}");
         }
 
         private void OnContactsEdit( object sender, EventArgs e )
