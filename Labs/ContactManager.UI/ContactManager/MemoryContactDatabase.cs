@@ -36,7 +36,7 @@ namespace ContactManager
             return null;
         }
 
-        //public Game[] GetAll()
+       
         protected override IEnumerable<Contact> GetAllCore()
         {
             //Use iterator

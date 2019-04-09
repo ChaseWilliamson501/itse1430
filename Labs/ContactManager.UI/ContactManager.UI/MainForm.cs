@@ -91,18 +91,15 @@ namespace ContactManager.UI
         {
             try
             {
-                //_games[GetNextEmptyGame()] = form.Game;
+                
                 _contacts.Add(form.Contact);
             } catch (NotImplementedException e)
             {
-                //Rewriting an exception
+                
                 throw new Exception("Not implemented yet", e);
             } catch (Exception e)
             {
-                //Log a message 
-
-                //Rethrow exception - wrong way
-                //throw e;
+               
                 throw;
             };
         }
@@ -114,14 +111,11 @@ namespace ContactManager.UI
         {
             var value = _ListContacts.SelectedItem;
 
-            //C-style cast - don't do this
-            //var game = (Game)value;
+            
+            var contact = value as Contact;
 
-            //Preferred - null if not valid
-            var game = value as Contact;
-
-            //Type check
-            var game2 = (value is Contact) ? (Contact)value : null;
+           
+            var contact2 = (value is Contact) ? (Contact)value : null;
 
             return _ListContacts.SelectedItem as Contact;
         }
@@ -130,7 +124,7 @@ namespace ContactManager.UI
 
         private void OnContactsSend( object sender, EventArgs e )
         {
-
+            _MessageBox.Text += Console.WriteLine($"? {completed}");
         }
 
         private void OnContactsEdit( object sender, EventArgs e )
