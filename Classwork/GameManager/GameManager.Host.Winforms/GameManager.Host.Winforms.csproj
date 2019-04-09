@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -102,6 +103,10 @@
     <ProjectReference Include="..\GameManager.FileSystem\GameManager.FileSystem.csproj">
       <Project>{3a0410a4-be96-4a6a-8db0-ebe191d49dcc}</Project>
       <Name>GameManager.FileSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GameManager.Sql\GameManager.Sql.csproj">
+      <Project>{85059C02-0376-445D-9AA6-8AC609D27309}</Project>
+      <Name>GameManager.Sql</Name>
     </ProjectReference>
     <ProjectReference Include="..\GameManager\GameManager.csproj">
       <Project>{2cdeb27a-ef9a-4240-9d0b-64a87259e8ec}</Project>

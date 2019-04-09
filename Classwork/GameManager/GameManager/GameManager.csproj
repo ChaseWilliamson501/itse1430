@@ -50,5 +50,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeedDatabase.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="GameDB\GameDB.sqlproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GameDB\Stored Procedures\AddGame.sql" />
+    <Content Include="GameDB\Stored Procedures\DeleteGame.sql" />
+    <Content Include="GameDB\Stored Procedures\FindByName.sql" />
+    <Content Include="GameDB\Stored Procedures\GetGame.sql" />
+    <Content Include="GameDB\Stored Procedures\GetGames.sql" />
+    <Content Include="GameDB\Stored Procedures\UpdateGame.sql" />
+    <Content Include="GameDB\Tables\Games.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

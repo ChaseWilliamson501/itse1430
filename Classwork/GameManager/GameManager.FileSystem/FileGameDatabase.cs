@@ -79,6 +79,7 @@ namespace GameManager.FileSystem
             //Use a reader/writer - text stream
             using (StreamReader reader = File.OpenText(_filename))
             {
+
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();

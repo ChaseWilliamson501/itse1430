@@ -31,18 +31,14 @@ namespace ContactManager.UI
             // Validate at business level
             try
             {
-                //new ObjectValidator().Validate(game);
+               
                 ObjectValidator.Validate(contact);
             } catch (ValidationException)
             {
                 MessageBox.Show(this, "Contact information not valid.", "Error", MessageBoxButtons.OK);
                 return;
             };
-            //if (!game.Validate())
-            //{
-            //    MessageBox.Show("Game not valid.", "Error", MessageBoxButtons.OK);
-            //    return;
-            //};
+            
 
             Contact = contact;
             DialogResult = DialogResult.OK;
