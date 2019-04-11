@@ -41,12 +41,8 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this._ListContacts = new System.Windows.Forms.ListBox();
-            this._txtMessageBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this._txtSubjectBox = new System.Windows.Forms.TextBox();
-            this._txtContactBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this._txtMessageBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -159,10 +155,6 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this._txtMessageBox);
-            this.splitContainer1.Panel2.Controls.Add(this.label2);
-            this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Panel2.Controls.Add(this._txtSubjectBox);
-            this.splitContainer1.Panel2.Controls.Add(this._txtContactBox);
             this.splitContainer1.Size = new System.Drawing.Size(800, 426);
             this.splitContainer1.SplitterDistance = 266;
             this.splitContainer1.TabIndex = 1;
@@ -175,55 +167,23 @@
             this._ListContacts.Size = new System.Drawing.Size(260, 420);
             this._ListContacts.TabIndex = 0;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 17);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Message";
+            // 
             // _txtMessageBox
             // 
-            this._txtMessageBox.Location = new System.Drawing.Point(72, 81);
+            this._txtMessageBox.Location = new System.Drawing.Point(72, 17);
             this._txtMessageBox.Multiline = true;
             this._txtMessageBox.Name = "_txtMessageBox";
             this._txtMessageBox.ReadOnly = true;
             this._txtMessageBox.Size = new System.Drawing.Size(374, 218);
             this._txtMessageBox.TabIndex = 5;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 39);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Subject";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Name";
-            // 
-            // _txtSubjectBox
-            // 
-            this._txtSubjectBox.Location = new System.Drawing.Point(72, 36);
-            this._txtSubjectBox.Name = "_txtSubjectBox";
-            this._txtSubjectBox.Size = new System.Drawing.Size(374, 20);
-            this._txtSubjectBox.TabIndex = 1;
-            // 
-            // _txtContactBox
-            // 
-            this._txtContactBox.Location = new System.Drawing.Point(72, 3);
-            this._txtContactBox.Name = "_txtContactBox";
-            this._txtContactBox.Size = new System.Drawing.Size(374, 20);
-            this._txtContactBox.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 81);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Message";
             // 
             // MainForm
             // 
@@ -262,12 +222,8 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ListBox _ListContacts;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox _txtSubjectBox;
-        private System.Windows.Forms.TextBox _txtContactBox;
-        private System.Windows.Forms.TextBox _txtMessageBox;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox _txtMessageBox;
     }
 }
 

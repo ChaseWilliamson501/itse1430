@@ -62,7 +62,7 @@ namespace ContactManager.UI
 
             while (true)
             {
-                //Modal
+              
                 if (form.ShowDialog(this) != DialogResult.OK)
                     return;
 
@@ -130,9 +130,13 @@ namespace ContactManager.UI
 
         private void OnContactsSend( object sender, EventArgs e )
         {
-            _txtMessageBox.Text += Console.WriteLine($"? {completed}");
-            _txtMessageBox.Text += Console.WriteLine($"? {completed}");
-            _txtMessageBox.Text += Console.WriteLine($"? {completed}");
+            var form = new SubjectAndMessage();
+
+            var selected = GetSelectedContacts();
+            if (selected == null)
+                return;
+
+           
         }
 
         private void OnContactsEdit( object sender, EventArgs e )
@@ -153,7 +157,7 @@ namespace ContactManager.UI
 
                 try
                 {
-                    //UpdateGame(game, form.Game);            
+                              
                     _contacts.Update(contact.Id, form.Contact);
                     break;
                 } catch (Exception ex)

@@ -28,7 +28,7 @@ namespace ContactManager.UI
             var message = SaveData();
 
 
-            // Validate at business level
+            
             try
             {
 
