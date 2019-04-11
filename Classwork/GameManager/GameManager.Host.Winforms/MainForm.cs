@@ -48,7 +48,7 @@ namespace GameManager.Host.Winforms
             var games = _games.GetAll();
             if (games.Count() == 0)
                 //SeedDatabase.Seed(_games);
-                _games.Seed();
+                //_games.Seed();
 
             BindList();
         }
