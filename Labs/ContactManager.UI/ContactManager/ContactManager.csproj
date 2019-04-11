@@ -45,6 +45,7 @@
     <Compile Include="Contact.cs" />
     <Compile Include="ContactDatabase.cs" />
     <Compile Include="IContactDatabase.cs" />
+    <Compile Include="IMessageService.cs" />
     <Compile Include="MemoryContactDatabase.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="ObjectValidator.cs" />
