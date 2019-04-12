@@ -39,7 +39,7 @@ namespace ContactManager.UI
         }
         private void BindList()
         {
-            //Bind games to listbox
+            //Bind contact's name to listbox
             _ListContacts.Items.Clear();
             _ListContacts.DisplayMember = nameof(Contact.Name);
 

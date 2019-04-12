@@ -10,6 +10,8 @@ namespace ContactManager.UI
     {
         public void Send( Message message )
         {
+            // Figure out code to send "message" to MainForm
+
             throw new NotImplementedException();
         }
     }

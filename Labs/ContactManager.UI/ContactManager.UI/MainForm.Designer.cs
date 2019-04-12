@@ -41,7 +41,6 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this._ListContacts = new System.Windows.Forms.ListBox();
-            this.label3 = new System.Windows.Forms.Label();
             this._txtMessageBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -153,7 +152,6 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this._txtMessageBox);
             this.splitContainer1.Size = new System.Drawing.Size(800, 426);
             this.splitContainer1.SplitterDistance = 266;
@@ -167,22 +165,13 @@
             this._ListContacts.Size = new System.Drawing.Size(260, 420);
             this._ListContacts.TabIndex = 0;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 17);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Message";
-            // 
             // _txtMessageBox
             // 
-            this._txtMessageBox.Location = new System.Drawing.Point(72, 17);
+            this._txtMessageBox.Location = new System.Drawing.Point(3, 0);
             this._txtMessageBox.Multiline = true;
             this._txtMessageBox.Name = "_txtMessageBox";
             this._txtMessageBox.ReadOnly = true;
-            this._txtMessageBox.Size = new System.Drawing.Size(374, 218);
+            this._txtMessageBox.Size = new System.Drawing.Size(524, 423);
             this._txtMessageBox.TabIndex = 5;
             // 
             // MainForm
@@ -222,7 +211,6 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ListBox _ListContacts;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox _txtMessageBox;
     }
 }
