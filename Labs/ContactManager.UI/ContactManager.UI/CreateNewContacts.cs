@@ -57,7 +57,7 @@ namespace ContactManager.UI
             _txtEmail.Text = contact.Email;
             
         }
-      
+        //Saves UI into new game
 
         private Contact SaveData()
         {
@@ -65,18 +65,19 @@ namespace ContactManager.UI
             contact.Name = _txtName.Text;
             contact.Email = _txtEmail.Text;
             
-           
+            //Demoing ctor
             var contact2 = new Contact(_txtName.Text, _txtEmail.Text);
             return contact;
         }
 
-        
+        //Defined in types
+        //Derived types may override and change it
         protected virtual void CanbeChanged() { }
 
-        
+        //Override a virtual member in Form
         protected override void OnLoad( EventArgs e )
         {
-            
+            //this.OnLoad(e);
             base.OnLoad(e);
 
             //Init UI if editing a game

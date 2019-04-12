@@ -30,10 +30,16 @@ namespace ContactManager.UI
         }
 
 
-      
+        protected override void OnLoad( EventArgs e )
+        {
+            base.OnLoad(e);
+             
+
+            BindList();
+        }
         private void BindList()
         {
-            //Bind contacts to listbox
+            //Bind games to listbox
             _ListContacts.Items.Clear();
             _ListContacts.DisplayMember = nameof(Contact.Name);
 
@@ -103,10 +109,8 @@ namespace ContactManager.UI
             };
         }
 
-        
 
         private IContactDatabase _contacts = new MemoryContactDatabase();
-        
 
         private Contact GetSelectedContact()
         {
@@ -128,21 +132,11 @@ namespace ContactManager.UI
         {
             var form = new SubjectAndMessage();
 
-            // Display UI
-            while (true)
-            {
-                var contact = GetSelectedContacts();
-                if (contact == null)
-                    return;
+            var selected = GetSelectedContacts();
+            if (selected == null)
+                return;
 
-                if (form.ShowDialog(this) != DialogResult.OK)
-                    return;
-
-                
-
-                BindList();
-
-            }
+           
         }
 
         private void OnContactsEdit( object sender, EventArgs e )
@@ -204,9 +198,9 @@ namespace ContactManager.UI
         {
             var value = _ListContacts.SelectedItem;
 
-            var contact = value as Contact;
+            var game = value as Contact;
 
-            var contact2 = (value is Contact) ? (Contact)value : null;
+            var game2 = (value is Contact) ? (Contact)value : null;
 
             return _ListContacts.SelectedItem as Contact;
         }

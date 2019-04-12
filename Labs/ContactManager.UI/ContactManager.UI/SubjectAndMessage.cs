@@ -20,9 +20,7 @@ namespace ContactManager.UI
 
         public Message Message { get; set; }
 
-         //_txtContactBox.Text = Contact.Name;
-
-        private void OnSend( object sender, EventArgs e )
+        private void OnSave( object sender, EventArgs e )
         {
             if (!ValidateChildren())
                 return;
@@ -34,10 +32,10 @@ namespace ContactManager.UI
             try
             {
 
-                ObjectValidator.Validate(message);
+                ObjectValidator.Validate(Message);
             } catch (ValidationException)
             {
-                MessageBox.Show(this, "Subject information not valid.", "Error", MessageBoxButtons.OK);
+                MessageBox.Show(this, "Contact information not valid.", "Error", MessageBoxButtons.OK);
                 return;
             };
 
@@ -59,7 +57,7 @@ namespace ContactManager.UI
             message.Body = _txtMessage.Text;
 
         }
-        
+        //Saves UI into new game
 
         private Message SaveData()
         {
@@ -72,10 +70,11 @@ namespace ContactManager.UI
             return message;
         }
 
-        
+        //Defined in types
+        //Derived types may override and change it
         protected virtual void CanbeChanged() { }
 
-        
+        //Override a virtual member in Form
         protected override void OnLoad( EventArgs e )
         {
             

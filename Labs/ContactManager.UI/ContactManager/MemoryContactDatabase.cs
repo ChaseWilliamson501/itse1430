@@ -44,15 +44,15 @@ namespace ContactManager
                 yield return Clone(item);
         }
 
-        protected override Contact UpdateCore( int id, Contact contact )
+        protected override Contact UpdateCore( int id, Contact game )
         {
             var index = GetIndex(id);
 
-            contact.Id = id;
+            game.Id = id;
             var existing = _items[index];
-            Clone(existing, contact);
+            Clone(existing, game);
 
-            return contact;
+            return game;
         }
 
         private Contact Clone( Contact contact )

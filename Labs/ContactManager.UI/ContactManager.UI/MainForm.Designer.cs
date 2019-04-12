@@ -170,7 +170,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 33);
+            this.label3.Location = new System.Drawing.Point(16, 17);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 6;
@@ -178,12 +178,11 @@
             // 
             // _txtMessageBox
             // 
-            this._txtMessageBox.BackColor = System.Drawing.SystemColors.Control;
-            this._txtMessageBox.Location = new System.Drawing.Point(65, 33);
+            this._txtMessageBox.Location = new System.Drawing.Point(72, 17);
             this._txtMessageBox.Multiline = true;
             this._txtMessageBox.Name = "_txtMessageBox";
             this._txtMessageBox.ReadOnly = true;
-            this._txtMessageBox.Size = new System.Drawing.Size(435, 349);
+            this._txtMessageBox.Size = new System.Drawing.Size(374, 218);
             this._txtMessageBox.TabIndex = 5;
             // 
             // MainForm

@@ -59,15 +59,16 @@ namespace ContactManager
             if (contact == null)
                 throw new ArgumentNullException(nameof(contact));
 
-          
+            //new ObjectValidator().Validate(game);
             ObjectValidator.Validate(contact);
-           
+            // if (!game.Validate())
+            //    throw new Exception("Game is invalid.");
 
             var existing = GetCore(id);
             if (existing != null)
                 throw new Exception("Contact info does not exist.");
 
-            //Contact names must be unique            
+            //Game names must be unique            
             var sameName = FindByName(contact.Name);
             if (sameName != null && sameName.Id != id)
                 throw new Exception("Contact info must be unique.");
