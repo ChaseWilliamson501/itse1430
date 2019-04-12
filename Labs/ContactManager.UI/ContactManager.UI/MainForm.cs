@@ -17,11 +17,21 @@ namespace ContactManager.UI
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Exit the Main form (File -> Exit)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnFileExit( object sender, EventArgs e )
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Information about the program creator(me) (Help -> About)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnHelpAbout( object sender, EventArgs e )
         {
             MessageBox.Show("Help");
@@ -55,6 +65,11 @@ namespace ContactManager.UI
             return contact.Name;
         }
 
+        /// <summary>
+        /// Collects contact info(Contact -> Add)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnContactAdd( object sender, EventArgs e )
         {
             // Display UI
@@ -125,9 +140,13 @@ namespace ContactManager.UI
             return _ListContacts.SelectedItem as Contact;
         }
 
-        
 
 
+        /// <summary>
+        /// Sends you to the SubjectandMessage form to create a message to the contact (Contact -> Send)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnContactsSend( object sender, EventArgs e )
         {
             var form = new SubjectAndMessage();
@@ -172,6 +191,11 @@ namespace ContactManager.UI
             BindList();
         }
 
+        /// <summary>
+        /// Deletes the contact from the list (Contacts -> delete)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnContactsDelete( object sender, EventArgs e )
         {
             // Get selected Contact, if any
