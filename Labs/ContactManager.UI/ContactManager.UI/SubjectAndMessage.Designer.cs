@@ -36,6 +36,8 @@
             this._txtSubject = new System.Windows.Forms.TextBox();
             this._txtMessage = new System.Windows.Forms.TextBox();
             this._errors = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this._txtContactBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this._errors)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +50,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "&Send";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.OnSave);
+            this.button1.Click += new System.EventHandler(this.OnSend);
             // 
             // button2
             // 
@@ -64,7 +66,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(34, 38);
+            this.label1.Location = new System.Drawing.Point(34, 56);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 2;
@@ -81,7 +83,7 @@
             // 
             // _txtSubject
             // 
-            this._txtSubject.Location = new System.Drawing.Point(91, 38);
+            this._txtSubject.Location = new System.Drawing.Point(91, 56);
             this._txtSubject.Name = "_txtSubject";
             this._txtSubject.Size = new System.Drawing.Size(402, 20);
             this._txtSubject.TabIndex = 4;
@@ -89,7 +91,7 @@
             // 
             // _txtMessage
             // 
-            this._txtMessage.Location = new System.Drawing.Point(91, 79);
+            this._txtMessage.Location = new System.Drawing.Point(91, 103);
             this._txtMessage.Multiline = true;
             this._txtMessage.Name = "_txtMessage";
             this._txtMessage.Size = new System.Drawing.Size(402, 238);
@@ -100,11 +102,30 @@
             this._errors.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this._errors.ContainerControl = this;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(34, 21);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Contact";
+            // 
+            // _txtContactBox
+            // 
+            this._txtContactBox.Location = new System.Drawing.Point(91, 18);
+            this._txtContactBox.Name = "_txtContactBox";
+            this._txtContactBox.ReadOnly = true;
+            this._txtContactBox.Size = new System.Drawing.Size(402, 20);
+            this._txtContactBox.TabIndex = 7;
+            // 
             // SubjectAndMessage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(691, 388);
+            this.Controls.Add(this._txtContactBox);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this._txtMessage);
             this.Controls.Add(this._txtSubject);
             this.Controls.Add(this.label2);
@@ -128,5 +149,7 @@
         private System.Windows.Forms.TextBox _txtSubject;
         private System.Windows.Forms.TextBox _txtMessage;
         private System.Windows.Forms.ErrorProvider _errors;
+        private System.Windows.Forms.TextBox _txtContactBox;
+        private System.Windows.Forms.Label label3;
     }
 }
