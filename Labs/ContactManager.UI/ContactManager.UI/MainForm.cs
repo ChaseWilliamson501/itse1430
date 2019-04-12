@@ -136,7 +136,10 @@ namespace ContactManager.UI
             if (selected == null)
                 return;
 
-           
+            if (form.ShowDialog(this) != DialogResult.OK)
+                return;
+
+            BindList();
         }
 
         private void OnContactsEdit( object sender, EventArgs e )
