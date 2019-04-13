@@ -135,11 +135,11 @@ namespace ContactManager.UI
         }
 
 
-        bool IsValidEmail( string source)
+        bool IsValidEmail( string Email)
         {
             try
             {
-                new System.Net.Mail.MailAddress(source);
+                new System.Net.Mail.MailAddress(Email);
                 return true;
             } catch
             { };
