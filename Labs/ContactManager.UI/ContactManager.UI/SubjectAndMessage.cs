@@ -64,8 +64,9 @@ namespace ContactManager.UI
 
         private void LoadData( Message message )
         {
-            message.Subject = _txtSubject.Text;
-            message.Body = _txtMessage.Text;
+            
+            _txtSubject.Text = message.Subject;
+            _txtMessage.Text = message.Body; 
 
         }
       
