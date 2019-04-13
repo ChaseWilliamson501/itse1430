@@ -9,7 +9,14 @@ namespace ContactManager
 {
     public class Contact : IValidatableObject
     {
+        /// <summary>
+        /// your name
+        /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// your email address
+        /// </summary>
         public string Email { get; set; }
 
         public int Id { get; set; }

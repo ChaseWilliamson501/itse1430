@@ -9,8 +9,19 @@ namespace ContactManager
 {
     public class Message : IValidatableObject
     {
+        /// <summary>
+        /// The contact part of your message
+        /// </summary>
         public string Contact { get; set; }
+
+        /// <summary>
+        /// The subject part of your message
+        /// </summary>
         public string Subject { get; set; }
+
+        /// <summary>
+        /// The body(message itself) part of your message
+        /// </summary>
         public string Body { get; set; }
 
         public Message()
