@@ -66,7 +66,7 @@ namespace ContactManager.UI
 
         private void LoadData( Message message )
         {
-            //_txtContactBox.Text = _ListContact.SelectedText
+            //_txtContactBox.Text = _ListContacts.SelectedText
             _txtSubject.Text = message.Subject;
             _txtMessage.Text = message.Body; 
 
