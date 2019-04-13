@@ -20,6 +20,12 @@ namespace ContactManager.UI
 
         public Contact Contact { get; set; }
 
+
+        /// <summary>
+        /// Save your contact info (click save)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnSave( object sender, EventArgs e )
         {
             if (!ValidateChildren())
@@ -45,6 +51,11 @@ namespace ContactManager.UI
             Close();
         }
 
+        /// <summary>
+        /// In case you change your mind
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnCancel( object sender, EventArgs e )
         {
             DialogResult = DialogResult.Cancel;
@@ -87,7 +98,11 @@ namespace ContactManager.UI
             ValidateChildren();
         }
 
-
+        /// <summary>
+        /// Need to know your name
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnValidateName( object sender, CancelEventArgs e )
         {
             var tb = sender as TextBox;
@@ -100,6 +115,11 @@ namespace ContactManager.UI
                 _errors.SetError(tb, "");
         }
 
+        /// <summary>
+        /// Need a valid address to send the message to
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnValidateEmail( object sender, CancelEventArgs e )
         {
             var tb = sender as TextBox;
@@ -113,7 +133,6 @@ namespace ContactManager.UI
 
 
         }
-
 
 
         bool IsValidEmail( string source)
