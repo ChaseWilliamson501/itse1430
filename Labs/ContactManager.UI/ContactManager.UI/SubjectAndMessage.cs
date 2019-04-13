@@ -11,8 +11,10 @@ using System.Windows.Forms;
 
 namespace ContactManager.UI
 {
-    public partial class SubjectAndMessage : Form
+    public partial class SubjectAndMessage : Form 
     {
+        
+
         public SubjectAndMessage()
         {
             InitializeComponent();
@@ -64,7 +66,7 @@ namespace ContactManager.UI
 
         private void LoadData( Message message )
         {
-            
+            //_txtContactBox.Text = _ListContact.SelectedText
             _txtSubject.Text = message.Subject;
             _txtMessage.Text = message.Body; 
 
@@ -74,6 +76,7 @@ namespace ContactManager.UI
         private Message SaveData()
         {
             var message = new Message();
+            //message.Contact = _txtContactBox;
             message.Subject = _txtSubject.Text;
             message.Body = _txtMessage.Text;
 

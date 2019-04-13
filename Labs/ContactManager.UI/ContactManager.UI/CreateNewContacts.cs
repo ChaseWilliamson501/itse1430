@@ -64,6 +64,7 @@ namespace ContactManager.UI
 
         private void LoadData( Contact contact )
         {
+           
             _txtName.Text = contact.Name;
             _txtEmail.Text = contact.Email;
             
