@@ -20,7 +20,12 @@ namespace ContactManager.UI
 
         public Message Message { get; set; }
 
-        private void OnSave( object sender, EventArgs e )
+        /// <summary>
+        /// Send your message to the MainForm (click send)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnSend( object sender, EventArgs e )
         {
             if (!ValidateChildren())
                 return;
@@ -45,6 +50,12 @@ namespace ContactManager.UI
             Close();
         }
 
+
+        /// <summary>
+        /// In case you change your mind and want to exit (click cancel)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnCancel( object sender, EventArgs e )
         {
             DialogResult = DialogResult.Cancel;
@@ -88,7 +99,11 @@ namespace ContactManager.UI
             ValidateChildren();
         }
 
-
+        /// <summary>
+        /// To show what your message is about
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnValidateSubject( object sender, CancelEventArgs e )
         {
             var tb = sender as TextBox;
