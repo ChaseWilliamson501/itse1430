@@ -32,6 +32,13 @@ namespace Nile.Windows
             Close();
         }
 
+        private void OnHelpAbout( object sender, EventArgs e )
+        {
+            MessageBox.Show("Help");
+            var form = new AboutBox();
+            form.ShowDialog();
+        }
+
         private void OnProductAdd( object sender, EventArgs e )
         {
             var child = new ProductDetailForm("Product Details");
@@ -140,5 +147,7 @@ namespace Nile.Windows
 
         private readonly IProductDatabase _database = new Nile.Stores.MemoryProductDatabase();
         #endregion
+
+        
     }
 }
