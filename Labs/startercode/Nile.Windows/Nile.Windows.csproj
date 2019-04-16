@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D5E89152-DDED-4583-A9F4-715FE712246D}</ProjectGuid>
+    <ProjectGuid>{8F5366FA-58D9-4DD3-89C7-66975A72F676}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ContactManager.UI</RootNamespace>
-    <AssemblyName>ContactManager.UI</AssemblyName>
+    <RootNamespace>Nile.Windows</RootNamespace>
+    <AssemblyName>Nile.Windows</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -47,71 +46,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AboutBox.Designer.cs">
-      <DependentUpon>AboutBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CreateNewContacts.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateNewContacts.Designer.cs">
-      <DependentUpon>CreateNewContacts.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MessageService.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SubjectAndMessage.cs">
+    <Compile Include="ProductDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SubjectAndMessage.Designer.cs">
-      <DependentUpon>SubjectAndMessage.cs</DependentUpon>
+    <Compile Include="ProductDetailForm.Designer.cs">
+      <DependentUpon>ProductDetailForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AboutBox.resx">
-      <DependentUpon>AboutBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CreateNewContacts.resx">
-      <DependentUpon>CreateNewContacts.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="ProductDetailForm.resx">
+      <DependentUpon>ProductDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="SubjectAndMessage.resx">
-      <DependentUpon>SubjectAndMessage.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ContactManager\ContactManager.csproj">
-      <Project>{303773e4-6b85-4702-b81c-7404b27836b5}</Project>
-      <Name>ContactManager</Name>
+    <ProjectReference Include="..\Nile\Nile.csproj">
+      <Project>{93bd7a37-01a9-498d-8479-67bef715ea20}</Project>
+      <Name>Nile</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
