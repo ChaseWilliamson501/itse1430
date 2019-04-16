@@ -71,7 +71,7 @@ namespace GameManager
             //    throw new Exception("Game is invalid.");
 
             var existing = GetCore(id);
-            if (existing != null)
+            if (existing == null)
                 throw new Exception("Game does not exist.");
 
             //Game names must be unique            

@@ -71,7 +71,7 @@ namespace GameManager.Host.Winforms
         private void LoadData( Game game )
         {
             _txtName.Text = game.Name;
-            _txtPublisher.Text = game.Publisher;
+            _txtPublisher.Text = game.Description;
             _txtPrice.Text = game.Price.ToString();
             _cbOwned.Checked = game.Owned;
             _cbCompleted.Checked = game.Completed;
@@ -82,7 +82,7 @@ namespace GameManager.Host.Winforms
         {
             var game = new Game();
             game.Name = _txtName.Text;
-            game.Publisher = _txtPublisher.Text;
+            game.Description = _txtPublisher.Text;
             game.Price = ReadDecimal(_txtPrice);
             game.Owned = _cbOwned.Checked;
             game.Completed = _cbCompleted.Checked;
