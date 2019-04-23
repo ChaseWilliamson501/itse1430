@@ -55,7 +55,7 @@ namespace Nile.Windows
                 }
                 catch
                 {
-                    _database.Add(child.Product);
+                    throw;
                 }
                 //Save product
                 UpdateList();
