@@ -11,6 +11,7 @@ namespace GameManager
         public int Id { get; set; }
 
         /// <summary>Gets or sets the name of the game.</summary>
+        [RequiredAttribute()]
         public string Name
         {
             //Expression bodied members
@@ -21,18 +22,17 @@ namespace GameManager
         }
 
         /// <summary>Gets or sets the description.</summary>
+        [Required(AllowEmptyStrings = false)]
         public string Description
         {
             get => _description ?? "";
             set => _description = value;
         }
 
-        //public bool IsCoolGame
-        //{
-        //    get { return Price < 59.99M; }
-        //}
+        
         public bool IsCoolGame => Price < 59.99M;
 
+        [RangeAttribute(0, Double.MaxValue, ErrorMessage = "Price must be >= 0.")]
         /// <summary>Gets or sets the price.</summary>
         public decimal Price { get; set; }
 
@@ -55,12 +55,12 @@ namespace GameManager
             var items = new List<ValidationResult>();
 
             //Name is required
-            if (String.IsNullOrEmpty(Name))
-                items.Add(new ValidationResult("Name is required.", new[] { nameof(Name) }));
+            //if (String.IsNullOrEmpty(Name))
+            //    items.Add(new ValidationResult("Name is required.", new[] { nameof(Name) }));
 
             //Price >= 0
-            if (Price < 0)
-                items.Add(new ValidationResult("Price must be >= 0.", new[] { nameof(Price) }));
+            //if (Price < 0)
+            //    items.Add(new ValidationResult("Price must be >= 0.", new[] { nameof(Price) }));
 
             return items;
         }
