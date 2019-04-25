@@ -41,11 +41,9 @@ namespace Nile.Windows
 
         private void OnProductAdd( object sender, EventArgs e )
         {
-            var child = new ProductDetailForm("Product Details");
-
             while (true)
             {
-               
+                var child = new ProductDetailForm("Product Details");
 
                 if (child.ShowDialog(this) != DialogResult.OK)
                     return;
@@ -54,20 +52,15 @@ namespace Nile.Windows
                 try
                 {
                     _database.Add(child.Product);
-                    break;
                 }
-                catch(Exception E)
+                catch
                 {
-                    
+                    throw;
                 }
                 //Save product
-                
+                UpdateList();
             }
-
-            UpdateList();
         }
-
-        
 
         private void OnProductEdit( object sender, EventArgs e )
         {
