@@ -130,8 +130,17 @@ namespace Nile.Windows
                 return;
 
             //TODO: Handle errors
-            //Delete product
-            _database.Remove(product.Id);
+
+            try
+            {
+                //Delete product
+                _database.Remove(product.Id);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(this, E.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             UpdateList();
         }
 
@@ -139,12 +148,26 @@ namespace Nile.Windows
         {
             var child = new ProductDetailForm("Product Details");
             child.Product = product;
-            if (child.ShowDialog(this) != DialogResult.OK)
-                return;
 
             //TODO: Handle errors
-            //Save product
-            _database.Update(child.Product);
+            while (true)
+            {
+
+                if (child.ShowDialog(this) != DialogResult.OK)
+                return;
+
+                try
+                {
+                    //Save product
+                    _database.Update(child.Product);
+                    break;
+                }
+                catch (Exception E)
+                {
+                    MessageBox.Show(this, E.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            };
+
             UpdateList();
         }
 
@@ -159,8 +182,14 @@ namespace Nile.Windows
         private void UpdateList ()
         {
             //TODO: Handle errors
-
-            _bsProducts.DataSource = _database.GetAll();
+            try
+            {
+                _bsProducts.DataSource = _database.GetAll();
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(this, E.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private readonly IProductDatabase _database = new Nile.Stores.MemoryProductDatabase();
