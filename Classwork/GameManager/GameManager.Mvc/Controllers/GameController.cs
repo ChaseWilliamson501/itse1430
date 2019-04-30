@@ -10,6 +10,7 @@ namespace GameManager.Mvc.Controllers
 {
     public class GameController : Controller
     {
+
         // GET: Game
         public ActionResult Index()
         {
