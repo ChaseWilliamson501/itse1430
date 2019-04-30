@@ -58,7 +58,7 @@ namespace Nile.Windows
                 }
                 catch(Exception E)
                 {
-                    MessageBox.Show(this, E.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, E.Message, "Cannot add product", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 
                 
@@ -138,7 +138,7 @@ namespace Nile.Windows
             }
             catch (Exception E)
             {
-                MessageBox.Show(this, E.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, E.Message, "Cannot remove", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             UpdateList();
@@ -164,7 +164,7 @@ namespace Nile.Windows
                 }
                 catch (Exception E)
                 {
-                    MessageBox.Show(this, E.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, E.Message, "Cannot edit", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             };
 
@@ -188,7 +188,7 @@ namespace Nile.Windows
             }
             catch (Exception E)
             {
-                MessageBox.Show(this, E.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, E.Message, "Cannot update", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
