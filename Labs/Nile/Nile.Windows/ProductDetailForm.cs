@@ -3,6 +3,7 @@
  */
 using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Windows.Forms;
 
 namespace Nile.Windows
@@ -70,6 +71,15 @@ namespace Nile.Windows
             };
 
             //TODO: Validate product
+            try
+            {
+                ObjectValidator.Validate(product);
+
+            } catch (ValidationException)
+            {
+                MessageBox.Show(this, "Game not valid.", "Error", MessageBoxButtons.OK);
+                return;
+            };
 
             Product = product;
             DialogResult = DialogResult.OK;

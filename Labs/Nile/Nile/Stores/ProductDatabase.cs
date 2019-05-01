@@ -3,6 +3,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Nile.Stores
 {
@@ -15,8 +16,13 @@ namespace Nile.Stores
         public Product Add ( Product product )
         {
             //TODO: Check arguments
+            if (product == null)
+                throw new ArgumentNullException(nameof(product));
 
             //TODO: Validate product
+            var existing = FindByName(product.Name);
+            if (existing != null)
+                throw new Exception("Game must be unique.");
 
             //Emulate database by storing copy
             return AddCore(product);
@@ -27,6 +33,8 @@ namespace Nile.Stores
         public Product Get ( int id )
         {
             //TODO: Check arguments
+            if (id <= 0)
+                throw new ArgumentOutOfRangeException(nameof(id), "Id must be > 0.");
 
             return GetCore(id);
         }
@@ -43,6 +51,8 @@ namespace Nile.Stores
         public void Remove ( int id )
         {
             //TODO: Check arguments
+            if (id <= 0)
+                throw new ArgumentOutOfRangeException(nameof(id), "Id must be > 0.");
 
             RemoveCore(id);
         }
@@ -53,8 +63,11 @@ namespace Nile.Stores
         public Product Update ( Product product )
         {
             //TODO: Check arguments
+            if (product == null)
+                throw new ArgumentNullException(nameof(product));
 
             //TODO: Validate product
+            ObjectValidator.Validate(product);
 
             //Get existing product
             var existing = GetCore(product.Id);
@@ -73,6 +86,15 @@ namespace Nile.Stores
         protected abstract Product UpdateCore( Product existing, Product newItem );
 
         protected abstract Product AddCore( Product product );
+
+        protected virtual Product FindByName( string name )
+        {
+            
+            return (from product in GetAllCore()
+                    where String.Compare(product.Name, name, true) == 0
+                    select product).FirstOrDefault();
+
+        }
         #endregion
     }
 }
