@@ -37,11 +37,24 @@ namespace GameManager.Mvc.Controllers
         [HttpPost]
         public ActionResult Create( Game model )
         {
-            var db = GetDatabase();
+            
+                if (ModelState.IsValid)
+                {
+                    var db = GetDatabase();
 
-            var game = db.Add(model);
+                    try
+                    {
+                        var game = db.Add(model);
 
-            return RedirectToAction("Index");
+                        return RedirectToAction("Index");
+                    } catch (Exception e)
+                    {
+                        ModelState.AddModelError("", e.Message);
+                    };
+                };
+
+                return View(model);
+            
 
         }
         public ActionResult Edit (int id)
@@ -59,12 +72,22 @@ namespace GameManager.Mvc.Controllers
         [HttpPost]
         public ActionResult Edit (Game model)
         {
-            var db = GetDatabase();
+            if (ModelState.IsValid)
+            {
+                var db = GetDatabase();
 
-            db.Update(model.Id, model);
+                try
+                {
+                    var game = db.Update(model.Id, model);
 
-            return RedirectToAction("Index");
-            
+                    return RedirectToAction("Index");
+                } catch (Exception e)
+                {
+                    ModelState.AddModelError("", e.Message);
+                };
+            };
+
+            return View(model);
         }
 
       
@@ -83,9 +106,17 @@ namespace GameManager.Mvc.Controllers
         {
             var db = GetDatabase();
 
-            db.Delete(model.Id);
+            try
+            {
+                db.Delete(model.Id);
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            } catch (Exception e)
+            {
+                ModelState.AddModelError("", e.Message);
+            };
+
+            return View(model);
 
         }
     }

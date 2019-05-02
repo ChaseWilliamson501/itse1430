@@ -139,6 +139,7 @@ namespace Nile.Windows
             // _bsProducts
             // 
             this._bsProducts.AllowNew = false;
+            this._bsProducts.DataSource = typeof(Nile.Product);
             // 
             // helpToolStripMenuItem
             // 
