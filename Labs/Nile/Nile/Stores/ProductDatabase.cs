@@ -22,7 +22,7 @@ namespace Nile.Stores
             //TODO: Validate product
             var existing = FindByName(product.Name);
             if (existing != null)
-                throw new Exception("Game must be unique.");
+                throw new Exception("Product must be unique.");
 
             //Emulate database by storing copy
             return AddCore(product);
@@ -60,9 +60,12 @@ namespace Nile.Stores
         /// <summary>Updates a product.</summary>
         /// <param name="product">The product to update.</param>
         /// <returns>The updated product.</returns>
-        public Product Update ( Product product )
+        public Product Update ( int id, Product product )
         {
             //TODO: Check arguments
+            if (id <= 0)
+                throw new ArgumentOutOfRangeException(nameof(id), "Id must be > 0.");
+
             if (product == null)
                 throw new ArgumentNullException(nameof(product));
 
@@ -71,6 +74,12 @@ namespace Nile.Stores
 
             //Get existing product
             var existing = GetCore(product.Id);
+            if (existing == null)
+                throw new Exception("Product does not exist.");
+
+            var sameName = FindByName(product.Name);
+            if (sameName != null && sameName.Id != id)
+                throw new Exception("Product must be unique.");
 
             return UpdateCore(existing, product);
         }
@@ -94,6 +103,11 @@ namespace Nile.Stores
                     where String.Compare(product.Name, name, true) == 0
                     select product).FirstOrDefault();
 
+        }
+
+        public void Update( Product product )
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }

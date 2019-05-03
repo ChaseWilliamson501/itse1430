@@ -77,7 +77,7 @@ namespace Nile.Windows
 
             } catch (ValidationException)
             {
-                MessageBox.Show(this, "Game not valid.", "Error", MessageBoxButtons.OK);
+                MessageBox.Show(this, "Product + not valid.", "Error", MessageBoxButtons.OK);
                 return;
             };
 
