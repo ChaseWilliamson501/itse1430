@@ -38,10 +38,15 @@ namespace Nile.Windows
             this._miProductEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this._miProductDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this._gridProducts = new System.Windows.Forms.DataGridView();
-            this._bsProducts = new System.Windows.Forms.BindingSource(this.components);
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._gridProducts = new System.Windows.Forms.DataGridView();
+            this._bsProducts = new System.Windows.Forms.BindingSource(this.components);
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isDiscontinuedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this._mainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._gridProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._bsProducts)).BeginInit();
@@ -114,6 +119,22 @@ namespace Nile.Windows
             this._miProductDelete.Text = "&Delete";
             this._miProductDelete.Click += new System.EventHandler(this.OnProductDelete);
             // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "&Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Text = "&About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.OnHelpAbout);
+            // 
             // _gridProducts
             // 
             this._gridProducts.AllowUserToAddRows = false;
@@ -123,6 +144,12 @@ namespace Nile.Windows
             this._gridProducts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this._gridProducts.AutoGenerateColumns = false;
             this._gridProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._gridProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn,
+            this.priceDataGridViewTextBoxColumn,
+            this.isDiscontinuedDataGridViewCheckBoxColumn});
             this._gridProducts.DataSource = this._bsProducts;
             this._gridProducts.Dock = System.Windows.Forms.DockStyle.Fill;
             this._gridProducts.Location = new System.Drawing.Point(0, 24);
@@ -141,20 +168,40 @@ namespace Nile.Windows
             this._bsProducts.AllowNew = false;
             this._bsProducts.DataSource = typeof(Nile.Product);
             // 
-            // helpToolStripMenuItem
+            // idDataGridViewTextBoxColumn
             // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "&Help";
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // aboutToolStripMenuItem
+            // nameDataGridViewTextBoxColumn
             // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.aboutToolStripMenuItem.Text = "&About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.OnHelpAbout);
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // isDiscontinuedDataGridViewCheckBoxColumn
+            // 
+            this.isDiscontinuedDataGridViewCheckBoxColumn.DataPropertyName = "IsDiscontinued";
+            this.isDiscontinuedDataGridViewCheckBoxColumn.HeaderText = "IsDiscontinued";
+            this.isDiscontinuedDataGridViewCheckBoxColumn.Name = "isDiscontinuedDataGridViewCheckBoxColumn";
+            this.isDiscontinuedDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
             // MainForm
             // 
